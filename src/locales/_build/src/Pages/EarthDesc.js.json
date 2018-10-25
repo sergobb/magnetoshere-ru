@@ -1,0 +1,37 @@
+{
+  "Earth": {
+    "origin": [
+      [
+        "src/Pages/EarthDesc.js",
+        30
+      ]
+    ]
+  },
+  "menuEarthDescription": {
+    "defaults": "Model description",
+    "origin": [
+      [
+        "src/Pages/EarthDesc.js",
+        33
+      ]
+    ]
+  },
+  "menuEarth2D": {
+    "defaults": "2D Magnetic Field Lines",
+    "origin": [
+      [
+        "src/Pages/EarthDesc.js",
+        34
+      ]
+    ]
+  },
+  "menuEarth3D": {
+    "defaults": "3D Magnetic Field Lines",
+    "origin": [
+      [
+        "src/Pages/EarthDesc.js",
+        35
+      ]
+    ]
+  }
+}
