@@ -5,11 +5,10 @@ import '../App.css';
 import { I18nProvider } from '@lingui/react';
 import catalogRu from '../locales/ru/messages.js';
 import catalogEn from '../locales/en/messages.js';
-import { Trans } from '@lingui/macro';
 import Header from './Header';
 import Footer from './Footer';
 import Desc from './EarthDesc/parab_mod_MSU-short.js';
-import SideMenu from './Components/EarthSideMenu';
+import SideMenu from './Components/SideMenu';
 
 class App extends Component {
 
@@ -26,13 +25,13 @@ class App extends Component {
                 <Header match = {this.props.match}/>
                 <Container fluid = {true}>
                     <Row>
-                        <Col md = {{size: 4}} lg = {{size: 3}} xl = {{size: 3}} className='d-sm-none d-md-block'>
-                            <SideMenu lang={this.state.lang}/>
+                        <Col md = {{size: 4}} lg = {{size: 3}} xl = {{size: 3}} className='d-none d-md-block'>
+                            <SideMenu lang={this.state.lang} context='menuEarth'/>
                         </Col>
                         <Col sm = {{size: 12}} md = {{size: 8}} lg = {{size: 6}} xl = {{size: 6}}>
                             {Desc}
                         </Col>
-                        <Col lg = {{size: 3}} xl = {{size: 3}} className='d-md-none d-lg-block'>
+                        <Col lg = {{size: 3}} xl = {{size: 3}} className='d-none d-lg-block'>
                         </Col>
                     </Row>
                 </Container>

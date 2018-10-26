@@ -3,8 +3,8 @@
     "translation": "Earth",
     "origin": [
       [
-        "src/Pages/EarthDesc.js",
-        30
+        "src/Pages/Components/SideMenu.js",
+        40
       ]
     ]
   },
@@ -24,7 +24,7 @@
     "origin": [
       [
         "src/Pages/EarthTemplate.js",
-        91
+        93
       ]
     ]
   },
@@ -44,7 +44,7 @@
     "origin": [
       [
         "src/Pages/topLogo.js",
-        34
+        35
       ]
     ]
   },
@@ -53,8 +53,8 @@
     "defaults": "About",
     "origin": [
       [
-        "src/Pages/MenuBar.js",
-        45
+        "src/Pages/Components/menuItems.js",
+        9
       ]
     ]
   },
@@ -63,8 +63,12 @@
     "defaults": "Contacts",
     "origin": [
       [
+        "src/Pages/Components/menuItems.js",
+        42
+      ],
+      [
         "src/Pages/MenuBar.js",
-        75
+        81
       ]
     ]
   },
@@ -73,8 +77,12 @@
     "defaults": "Earth",
     "origin": [
       [
+        "src/Pages/Components/menuItems.js",
+        16
+      ],
+      [
         "src/Pages/MenuBar.js",
-        52
+        58
       ]
     ]
   },
@@ -83,12 +91,8 @@
     "defaults": "2D Magnetic Field Lines",
     "origin": [
       [
-        "src/Pages/EarthDesc.js",
-        34
-      ],
-      [
-        "src/Pages/MenuBar.js",
-        59
+        "src/Pages/Components/menuItems.js",
+        24
       ]
     ]
   },
@@ -97,12 +101,8 @@
     "defaults": "3D Magnetic Field Lines",
     "origin": [
       [
-        "src/Pages/EarthDesc.js",
-        35
-      ],
-      [
-        "src/Pages/MenuBar.js",
-        62
+        "src/Pages/Components/menuItems.js",
+        28
       ]
     ]
   },
@@ -111,12 +111,8 @@
     "defaults": "Model description",
     "origin": [
       [
-        "src/Pages/EarthDesc.js",
-        33
-      ],
-      [
-        "src/Pages/MenuBar.js",
-        56
+        "src/Pages/Components/menuItems.js",
+        20
       ]
     ]
   },
@@ -125,8 +121,8 @@
     "defaults": "Jupiter",
     "origin": [
       [
-        "src/Pages/MenuBar.js",
-        67
+        "src/Pages/Components/menuItems.js",
+        34
       ]
     ]
   },
@@ -135,8 +131,8 @@
     "defaults": "En",
     "origin": [
       [
-        "src/Pages/MenuBar.js",
-        81
+        "src/Pages/Components/menuItems.js",
+        48
       ]
     ]
   },
@@ -145,8 +141,8 @@
     "defaults": "Ru",
     "origin": [
       [
-        "src/Pages/MenuBar.js",
-        78
+        "src/Pages/Components/menuItems.js",
+        45
       ]
     ]
   },
@@ -155,8 +151,18 @@
     "defaults": "Mercury",
     "origin": [
       [
-        "src/Pages/MenuBar.js",
-        48
+        "src/Pages/Components/menuItems.js",
+        13
+      ]
+    ]
+  },
+  "menuOldSite": {
+    "translation": "Old Site",
+    "defaults": "Old Site",
+    "origin": [
+      [
+        "src/Pages/Components/menuItems.js",
+        52
       ]
     ]
   },
@@ -165,8 +171,8 @@
     "defaults": "Saturn",
     "origin": [
       [
-        "src/Pages/MenuBar.js",
-        70
+        "src/Pages/Components/menuItems.js",
+        38
       ]
     ]
   },

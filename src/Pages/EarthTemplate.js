@@ -11,7 +11,7 @@ import catalogEn from '../locales/en/messages.js';
 import { Trans } from '@lingui/macro';
 import Header from './Header';
 import Footer from './Footer';
-import SideMenu from './Components/EarthSideMenu';
+import SideMenu from './Components/SideMenu';
 
 class App extends Component {
 
@@ -86,7 +86,7 @@ class App extends Component {
                 <Container fluid = {true}>
                     <Row>
                         <Col md = {{size: 4}} lg = {{size: 3}} xl = {{size: 3}} className='d-none d-md-block'>
-                            <SideMenu lang={this.state.lang}/>
+                            <SideMenu lang={this.state.lang} context='menuEarth'/>
                         </Col>
                         <Col xs = {{size: 12}} sm = {{size: 12}} md = {{size: 8}} lg = {{size: 6}} xl = {{size: 6}}>
                             <div className="App">
