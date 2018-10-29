@@ -1,9 +1,9 @@
 import React from 'react';
-import {NavLink} from 'reactstrap';
+import { NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
-let menu = {
+let menu = [{
     menuAbout: {
         link: '/about/',
         item: (<Trans id='menuAbout'>About</Trans>)
@@ -36,51 +36,24 @@ let menu = {
     menuSaturn: {
         disabled: true,
         item: (<Trans id='menuSaturn'>Saturn</Trans>)
-    },
+    }
+}, {
     menuContacts: {
         disabled: true,
         item: (<Trans id='menuContacts'>Contacts</Trans>)
     },
     menuLangRu: {
-        item: (<Trans id='menuLangRu'>Ru</Trans>)
+        item: (<Trans id='menuLangRu'>Ru</Trans>),
+        lang: "ru"
     },
     menuLangEn: {
-        item: (<Trans id='menuLangEn'>En</Trans>)
+        item: (<Trans id='menuLangEn'>En</Trans>),
+        lang: "en"
     },
     menuOldSite: {
         external: 'http://www.magnetosphere.ru/old.html',
         item: (<Trans id='menuOldSite'>Old Site</Trans>)
     }
-};
+}];
 
-function makeLinkItem(menu, lang, key) {
-	let lg = '/'+lang;
-
-    if (menu.link !== undefined) {
-        return (
-            <Link {...{disabled:menu.disabled,to:lg + menu.link, key: key}} className='nav-link'>
-                {menu.item}
-            </Link>
-        );
-    } else if (menu.href !== undefined) {
-        return (
-            <NavLink {...{disabled:menu.disabled, href:lg+menu.href}}>
-                {menu.item}
-            </NavLink>
-        );
-    } else if (menu.external !== undefined) {
-        return (
-            <NavLink {...{disabled:menu.disabled, href:menu.external}}>
-                {menu.item}
-            </NavLink>
-        );
-    } else {
-        return (
-            <NavLink {...{disabled:menu.disabled}}>
-                {menu.item}
-            </NavLink>
-        );
-    }
-}
-
-export {menu, makeLinkItem};
+export { menu };
