@@ -4,18 +4,10 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    NavbarBrand
 } from 'reactstrap';
-import { Trans } from '@lingui/macro';
-import { menu } from './Components/menuItems';
-import { makeMenuBar } from './Components/menuFuncs';
+import { menu } from './menuItems';
+import { makeMenuBar } from './menuFuncs';
 
 
 class MenuBar extends Component {

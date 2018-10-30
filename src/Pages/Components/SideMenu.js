@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, CardBody, CardHeader, Nav, Navbar } from 'reactstrap';
+import { Card, CardTitle, CardBody, CardHeader, Navbar } from 'reactstrap';
 import { Trans } from '@lingui/macro';
 import { menu } from './menuItems';
 import { makeSideMenu } from './menuFuncs';

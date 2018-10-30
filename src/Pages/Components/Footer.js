@@ -1,9 +1,9 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import EuroPlanet from './logo_europlanet.png';
+import EuroPlanet from '../images/logo_europlanet.png';
 
-class Header extends Component {
+class Footer extends Component {
 
     render() {
         return (
@@ -13,7 +13,7 @@ class Header extends Component {
                     </Col>
                     <Col sm = {{size: 10}} md = {{size: 8}} lg = {{size: 6}} xl = {{size: 6}}>
                         <center>
-                            <a href='http://planetaryspaceweather-europlanet.irap.omp.eu/'><img src={EuroPlanet}/></a>
+                            <a href='http://planetaryspaceweather-europlanet.irap.omp.eu/'><img src={EuroPlanet} alt="Europlanet logo"/></a>
                         </center>
                     </Col>
                     <Col  sm = {{size: 1}} md = {{size: 2}} lg = {{size: 3}} xl = {{size: 3}}>
@@ -24,4 +24,4 @@ class Header extends Component {
     }
 };
 
-export default Header;
+export default Footer;

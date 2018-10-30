@@ -72,8 +72,8 @@ intensity:</p>
 		<tr>
 			<td width="578" valign="top">
 				<p >
-<img src={image1} name="Image1" width="269" height="283" border="0"/>
-<img src={image2} name="Image2" width="282" height="280" border="0"/>
+<img src={image1} alt="Paramod" name="Image1" width="269" height="283" border="0"/>
+<img src={image2} alt="Paramod" name="Image2" width="282" height="280" border="0"/>
 </p>
 			</td>
 		</tr>

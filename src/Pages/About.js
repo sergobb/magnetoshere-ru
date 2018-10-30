@@ -5,9 +5,9 @@ import '../App.css';
 import { I18nProvider } from '@lingui/react';
 import catalogRu from '../locales/ru/messages.js';
 import catalogEn from '../locales/en/messages.js';
-import { Trans } from '@lingui/macro';
-import Header from './Header';
-import Footer from './Footer';
+// import { Trans } from '@lingui/macro';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 import { Link } from 'react-router-dom';
 import SideMenu from './Components/SideMenu';
 

@@ -9,8 +9,8 @@ import { I18nProvider } from '@lingui/react';
 import catalogRu from '../locales/ru/messages.js';
 import catalogEn from '../locales/en/messages.js';
 import { Trans } from '@lingui/macro';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 import SideMenu from './Components/SideMenu';
 
 class App extends Component {

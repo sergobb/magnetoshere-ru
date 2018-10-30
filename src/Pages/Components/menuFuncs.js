@@ -1,10 +1,6 @@
 /*jshint esversion: 6 */
-import React, { Component } from 'react';
+import React from 'react';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
@@ -71,7 +67,7 @@ function makeDropdownList(menu, lang, context = 'Menubar') {
         if (menu.hasOwnProperty(m)) {
             if (menu[m].menu === undefined) {
                 list.push((
-                    <DropdownItem>
+                    <DropdownItem key={'Dropdown' +  context + m}>
                         {makeLinkItem(menu[m], lang, context + m)}
                     </DropdownItem>
                 ));
@@ -96,17 +92,16 @@ function makeMenuBarList(menu, lang, context = 'Menubar') {
     let m, list = [];
 
     for (m in menu) {
-        console.log(m);
         if (menu.hasOwnProperty(m)) {
             if (menu[m].menu === undefined) {
                 list.push((
-                    <NavItem>
+                    <NavItem key = {'NavItem' + context + m}>
                         {makeLinkItem(menu[m], lang, context + m)}
                     </NavItem>
                 ));
             } else {
                 list.push((
-                    <UncontrolledDropdown nav inNavbar>
+                    <UncontrolledDropdown nav inNavbar key={'UncontrolledDropdown' + context}>
                         <DropdownToggle nav caret>
                             {menu[m].item}
                         </DropdownToggle>
@@ -123,7 +118,7 @@ function makeMenuBarList(menu, lang, context = 'Menubar') {
 
 function makeMenuBar(menu, lang, place) {
     return (
-        <Nav className={place} navbar>
+        <Nav className={place} navbar key = {'MenuBar' + place}>
             {makeMenuBarList(menu, lang, 'MenuBar')}
         </Nav>
     );

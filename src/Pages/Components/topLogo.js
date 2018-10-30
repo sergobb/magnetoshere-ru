@@ -1,9 +1,9 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import leftLogo from '../header1.jpg';
-import rightLogo from '../logo.jpg';
-import background from '../headerbckgrnd.jpg';
+import leftLogo from '../images/header1.jpg';
+import rightLogo from '../images/logo.jpg';
+import background from '../images/headerbckgrnd.jpg';
 import { Trans } from '@lingui/macro';
 
 class TopLogo extends Component {
