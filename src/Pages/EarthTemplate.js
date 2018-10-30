@@ -38,12 +38,41 @@ class App extends Component {
 
     }
 
+    componentWillReceiveProps(props) {
+        var self = this,
+            now = moment(),
+            duration = moment.duration(now.utcOffset(), 'minutes'),
+            uts = (props.match.params.uts !== undefined) ? props.match.params.uts : null;
+
+        if (props.match.params.uts !== this.props.match.params.uts) {
+            // console.log('componentWillReceiveProps');
+            // console.log(this.props.match.params.uts, props.match.params.uts);
+
+            now = now.subtract(duration);
+            if (uts !== null) {
+                now = moment(parseFloat(uts));
+            }
+
+            paramodData.get({
+                datetime: now,
+                view3d: this.state.view3d
+            }).then(function(response) {
+                var udt = moment(response.data.dt).format('x');
+                // console.log(response.data.dt);
+                self.setState({
+                    datetime: udt,
+                    data: response.data.data
+                });
+            });
+        }
+    }
+
     componentDidMount() {
         var self = this,
             now = new moment(),
             duration = moment.duration(now.utcOffset(), 'minutes'),
             uts = (this.props.match.params.uts !== undefined) ? this.props.match.params.uts : null;
-
+        // console.log('componentDidMount');
         now = now.subtract(duration);
         if (uts !== null) {
             now = moment(parseFloat(uts));
@@ -53,13 +82,16 @@ class App extends Component {
             paramodData.get({
                 datetime: now,
                 view3d: this.state.view3d
-            }).then(function (response) {
-                var udt = moment(response.data.dt).format('x');
-                console.log(response.data.dt);
-                self.setState({
-                    datetime: udt,
-                    data: response.data.data
-                });
+            }).then(function(response) {
+                var udt = moment(response.data.dt).format('x'),
+                    new_path = self.props.match.path.replace(':lang', self.state.lang);
+                // console.log(response.data.dt);
+                // self.setState({
+                //     datetime: udt,
+                //     data: response.data.data
+                // });
+                new_path = new_path.replace('/:uts/', '');
+                self.props.history.push(new_path + '/' + udt);
             });
         }
     }
@@ -70,12 +102,16 @@ class App extends Component {
         paramodData.get({
             datetime: picker.startDate,
             view3d: this.state.view3d
-        }).then(function (response) {
-            var udt = moment(response.data.dt).format('x');
-            self.setState({
-                datetime: udt,
-                data: response.data.data
-            });
+        }).then(function(response) {
+            var udt = moment(response.data.dt).format('x'),
+                new_path = self.props.match.path.replace(':lang', self.state.lang);
+            // self.setState({
+            //     datetime: udt,
+            //     data: response.data.data
+            // });
+
+            new_path = new_path.replace('/:uts/', '');
+            self.props.history.push(new_path + '/' + udt);
         });
     }
 

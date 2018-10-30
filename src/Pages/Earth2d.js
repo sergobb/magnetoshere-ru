@@ -23,7 +23,7 @@ class App extends Earth {
 
     render() {
         return (
-            <Earth ParamodChart = {ParamodChart} match = {this.props.match} view3d = {false}/>
+            <Earth ParamodChart = {ParamodChart} match = {this.props.match} view3d = {false} history = {this.props.history}/>
         );
     }
 }

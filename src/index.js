@@ -16,9 +16,9 @@ ReactDOM.render((
 				<Route exact path='/:lang/about' component = {About}/>
 				<Route exact path='/:lang/earthdesc' component = {EarthDesc}/>
 				<Route exact path='/:lang/earth2d' component = {Earth2dPage}/>
-				<Route path='/:lang/earth2d/:uts/' component = {Earth2dPage}/>
+				<Route exact path='/:lang/earth2d/:uts/' component = {Earth2dPage}/>
 				<Route exact path='/:lang/earth3d' component = {Earth3dPage}/>
-				<Route path='/:lang/earth3d/:uts/' component = {Earth3dPage}/>
+				<Route exact path='/:lang/earth3d/:uts/' component = {Earth3dPage}/>
 			</Switch>
 		</BrowserRouter>
     ),

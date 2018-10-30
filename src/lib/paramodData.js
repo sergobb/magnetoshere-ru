@@ -22,7 +22,7 @@ class ParamodData {
                 cached = false;
 
             dt = Math.floor(dt/3600/1000)*3600*1000;
-            console.log(dt);
+            // console.log(dt);
             if (cache !== null) {
                 cache[dd].data.forEach(function (d) {
                 	if (d.dt === dt.toString()) {

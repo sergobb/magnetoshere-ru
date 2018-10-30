@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import ReactHighcharts from 'react-highcharts';
 import Highcharts3d from 'highcharts/highcharts-3d';
+import HighchartsBoost from 'highcharts/modules/boost';
 Highcharts3d(ReactHighcharts.Highcharts);
+HighchartsBoost(ReactHighcharts.Highcharts);
 
 class App extends Component {
 
