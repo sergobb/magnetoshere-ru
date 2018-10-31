@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import ReactHighcharts from 'react-highcharts';
+import './css/ParamodCharts.css';
 
 class App extends Component {
 

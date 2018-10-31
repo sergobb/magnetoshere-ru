@@ -8,6 +8,7 @@ import {
 } from 'reactstrap';
 import { menu } from './menuItems';
 import { makeMenuBar } from './menuFuncs';
+import './css/MenuBar.css';
 
 
 class MenuBar extends Component {

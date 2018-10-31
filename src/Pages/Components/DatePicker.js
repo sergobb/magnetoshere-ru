@@ -14,6 +14,7 @@ import * as moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import { Trans } from '@lingui/macro';
+import './css/DatePicker.css';
 
 class DatePicker extends Component {
 
@@ -53,7 +54,7 @@ class DatePicker extends Component {
         return (
             <div className="DatePicker"> 
                 <span 
-                    style = {{padding:"5px"}}
+                    className='DatePickerSpan'
                     onClick = { () => this.onDateTimeChange( moment(this.state.datetime - 24 * 60 * 60 * 1000) ) }
                     id = "oneDayBack"
                 >
@@ -63,7 +64,7 @@ class DatePicker extends Component {
                     /> 
                 </span>
                 <span 
-                    style = {{padding:"5px"}}
+                    className='DatePickerSpan'
                     onClick = { () => this.onDateTimeChange( moment(this.state.datetime - 60 * 60 * 1000) ) }
                     id = "oneHourBack"
                 >
@@ -84,18 +85,18 @@ class DatePicker extends Component {
                 >
                     <InputGroup id = "ParamodCalendar">
                         <InputGroupAddon addonType="prepend">
-                            <span style = {{paddingRight:"5px", paddingTop: "3px", paddingLeft: "5px"}}>
+                            <span className='DatePickerCalendar'>
                                 <FontAwesomeIcon 
                                     icon = {faCalendarAlt} 
                                     size = "2x" 
                                 /> 
                             </span>
                         </InputGroupAddon>
-                        <Input placeholder={moment.unix(this.state.datetime / 1000).format("YYYY-MM-DD HH:00")} />
+                        <Input placeholder={moment.unix(this.state.datetime / 1000).format("YYYY-MM-DD HH:00")} className='DatePickerInput'/>
                     </InputGroup>
                 </DateRangePicker>
                 <span 
-                    style = {{padding:"5px"}}
+                    className='DatePickerSpan'
                     onClick = { () => this.onDateTimeChange( moment(this.state.datetime + 60 * 60 * 1000) ) }
                     id = "oneHourForward"
                 >
@@ -105,7 +106,7 @@ class DatePicker extends Component {
                     /> 
                 </span>
                 <span 
-                    style = {{padding:"5px"}}
+                    className='DatePickerSpan'
                     onClick = { () => this.onDateTimeChange( moment(this.state.datetime + 24 * 60 * 60 * 1000) ) }
                     id = "oneDayForward"
                 >

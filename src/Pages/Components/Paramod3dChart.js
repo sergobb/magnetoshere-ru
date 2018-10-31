@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import ReactHighcharts from 'react-highcharts';
 import Highcharts3d from 'highcharts/highcharts-3d';
 import HighchartsBoost from 'highcharts/modules/boost';
+import './css/ParamodCharts.css';
 Highcharts3d(ReactHighcharts.Highcharts);
-HighchartsBoost(ReactHighcharts.Highcharts);
+// HighchartsBoost(ReactHighcharts.Highcharts);
 
 class App extends Component {
 
@@ -17,7 +18,13 @@ class App extends Component {
                     fontSize: '14px'
                 }
             },
+            // boost: {
+            //     enabled: true,
+            //     useGPUTranslations: true,
+            //     allowForce: true
+            // },
             chart: {
+                // width: '80%',
                 height: (9 / 8 * 100) + '%',
                 // plotBorderWidth: 2,
                 type: 'scatter3d',
@@ -26,8 +33,8 @@ class App extends Component {
                     alpha: 10,
                     beta: -20,
                     depth: 550,
-                    viewDistance: 100,
-                    fitToPlot: true,
+                    viewDistance: 50,
+                    fitToPlot: false,
                     frame: {
                         bottom: { size: 1, color: 'rgba(0,0,0,0.02)' },
                         front: { size: 1, color: 'rgba(0,0,0,0.04)' },
@@ -160,7 +167,7 @@ class App extends Component {
         }
 
         return (
-            <div className="ParamodChart">
+            <div className="Paramod3DChart">
                 <ReactHighcharts config= {config} callback = {afterRender}></ReactHighcharts>
             </div>
         );
