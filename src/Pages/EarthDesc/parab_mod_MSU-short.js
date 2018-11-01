@@ -2,6 +2,10 @@ import React from 'react';
 import image1 from "./parab_mod_MSU-short_html_6c7b849a45546b80.png";
 import image2 from "./parab_mod_MSU-short_html_58b286e271022742.png";
 import { Trans } from '@lingui/macro';
+// import MathJax from 'react-mathjax2';
+// <MathJax.Context input='tex'>
+// <MathJax.Text text="MathJAX test: \(B_m=B_{sd}+B_t+B_r+B_{sr}+B_{fac}\)"/>
+// </MathJax.Context>
 
 let Desc = (
 <div>
@@ -9,10 +13,9 @@ let Desc = (
 <h2><Trans id='earthModelTitle'>Paraboloid model description</Trans></h2>
 </center>
 <Trans id='earthModelDesc'>
-<p  align="justify">Paraboloid
-model represents the magnetic fields in the Earth's magnetosphere as
-a superposition of the ring current <i>B<sub>r</sub></i>
-,
+<p  align="justify"> 
+Paraboloid model represents the magnetic fields in the Earth's magnetosphere as
+a superposition of the ring current <i>B<sub>r</sub></i>,
 of the tail current including the closure currents on the
 magnetopause <i>B<sub>t</sub></i>,
 of the Region 1 field-aligned currents <i>B<sub>fac</sub></i>,
