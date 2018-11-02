@@ -10,7 +10,6 @@ import MathJax from "react-mathjax2";
 import ReactHtmlParser from "react-html-parser";
 
 let Desc = `
-	<div>
 	MathJAX test: \\(B_m=B_{sd}+B_t+B_r+B_{sr}+B_{fac}\\)
 		<center>
 			<h2>
@@ -260,7 +259,7 @@ let Desc = `
 					Nauka, 85-90, 1993.
 				</li>
 			</ol>
-	</div>
+	
 `;
 
 let test = Desc.replace("\\(", '<span class="MathJax">').replace(
@@ -280,10 +279,10 @@ export default (
 			transform: function(node) {
 				if (
 					node.type === "text" &&
+					node.parent !== null &&
 					node.parent.type === "tag" &&
 					node.parent.attribs.class === "MathJax"
 				) {
-					console.log(node);
 					return (
 						<MathJax.Context input="tex" key={node.data}>
 							<MathJax.Node inline>
