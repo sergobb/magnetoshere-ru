@@ -7,7 +7,7 @@ import catalogRu from "../locales/ru/messages.js";
 import catalogEn from "../locales/en/messages.js";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import Desc from "./EarthDesc/parab_mod_MSU-short.js";
+import Desc from "./EarthDesc/parab_mod_MSU-short1.js";
 import SideMenu from "./Components/SideMenu";
 
 class App extends Component {
