@@ -285,7 +285,7 @@ export default (
 				) {
 					console.log(node);
 					return (
-						<MathJax.Context input="tex">
+						<MathJax.Context input="tex" key={node.data}>
 							<MathJax.Node inline>
 								{node.data}
 							</MathJax.Node>
