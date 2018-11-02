@@ -1,23 +1,22 @@
 /*jshint esversion: 6 */
-import React, { Component } from 'react';
-import { InputGroup, InputGroupAddon, Input, Tooltip } from 'reactstrap';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
+import React, { Component } from "react";
+import { InputGroup, InputGroupAddon, Input, Tooltip } from "reactstrap";
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import {
     faCaretLeft as faLeftHour,
     faCaretRight as faRightHour,
     faAngleLeft as faLeftDay,
     faAngleRight as faRightDay
-} from '@fortawesome/free-solid-svg-icons';
-import * as moment from 'moment';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-daterangepicker/daterangepicker.css';
-import { Trans } from '@lingui/macro';
-import './css/DatePicker.css';
+} from "@fortawesome/free-solid-svg-icons";
+import * as moment from "moment";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-daterangepicker/daterangepicker.css";
+import { Trans } from "@lingui/macro";
+import "./css/DatePicker.css";
 
 class DatePicker extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -26,15 +25,19 @@ class DatePicker extends Component {
             tooltipForwardHourOpen: false,
             tooltipBackDayOpen: false,
             tooltipForwardDayOpen: false,
-            datetime: (typeof props.datetime === "string") ? parseFloat(props.datetime) : this.props.datetime
+            datetime:
+                typeof props.datetime === "string"
+                    ? parseFloat(props.datetime)
+                    : this.props.datetime
         };
-
     }
     componentWillReceiveProps(props) {
         this.setState({
-            datetime: (typeof props.datetime === "string") ? parseFloat(props.datetime) : this.props.datetime
+            datetime:
+                typeof props.datetime === "string"
+                    ? parseFloat(props.datetime)
+                    : this.props.datetime
         });
-
     }
 
     toggleTooltip(tip) {
@@ -52,108 +55,121 @@ class DatePicker extends Component {
 
     render() {
         return (
-            <div className="DatePicker"> 
-                <span 
-                    className='DatePickerSpan'
-                    onClick = { () => this.onDateTimeChange( moment(this.state.datetime - 24 * 60 * 60 * 1000) ) }
-                    id = "oneDayBack"
+            <div className="DatePicker">
+                <span
+                    className="DatePickerSpan"
+                    onClick={() =>
+                        this.onDateTimeChange(
+                            moment(this.state.datetime - 24 * 60 * 60 * 1000)
+                        )
+                    }
+                    id="oneDayBack"
                 >
-                    <FontAwesomeIcon 
-                        icon = {faLeftDay} 
-                        size = "2x" 
-                    /> 
+                    <FontAwesomeIcon icon={faLeftDay} size="2x" />
                 </span>
-                <span 
-                    className='DatePickerSpan'
-                    onClick = { () => this.onDateTimeChange( moment(this.state.datetime - 60 * 60 * 1000) ) }
-                    id = "oneHourBack"
+                <span
+                    className="DatePickerSpan"
+                    onClick={() =>
+                        this.onDateTimeChange(
+                            moment(this.state.datetime - 60 * 60 * 1000)
+                        )
+                    }
+                    id="oneHourBack"
                 >
-                    <FontAwesomeIcon 
-                        icon = {faLeftHour} 
-                        size = "2x" 
-                    /> 
+                    <FontAwesomeIcon icon={faLeftHour} size="2x" />
                 </span>
-                <DateRangePicker 
-                    startDate = {moment.unix(this.state.datetime / 1000)}
-                    alwaysShowCalendars = {true}
-                    showDropdowns = {true}
-                    singleDatePicker = {true}
-                    timePicker = {true}
-                    timePicker24Hour = {true}
-                    timePickerIncrement = {60}
-                    onApply = { (event, picker) => this.onDateTimeChange( picker.startDate ) }
+                <DateRangePicker
+                    startDate={moment.unix(this.state.datetime / 1000)}
+                    alwaysShowCalendars={true}
+                    showDropdowns={true}
+                    singleDatePicker={true}
+                    timePicker={true}
+                    timePicker24Hour={true}
+                    timePickerIncrement={60}
+                    onApply={(event, picker) =>
+                        this.onDateTimeChange(picker.startDate)
+                    }
                 >
-                    <InputGroup id = "ParamodCalendar">
+                    <InputGroup id="ParamodCalendar">
                         <InputGroupAddon addonType="prepend">
-                            <span className='DatePickerCalendar'>
-                                <FontAwesomeIcon 
-                                    icon = {faCalendarAlt} 
-                                    size = "2x" 
-                                /> 
+                            <span className="DatePickerCalendar">
+                                <FontAwesomeIcon
+                                    icon={faCalendarAlt}
+                                    size="2x"
+                                />
                             </span>
                         </InputGroupAddon>
-                        <Input placeholder={moment.unix(this.state.datetime / 1000).format("YYYY-MM-DD HH:00")} className='DatePickerInput'/>
+                        <Input
+                            placeholder={moment
+                                .unix(this.state.datetime / 1000)
+                                .format("YYYY-MM-DD HH:00")}
+                            className="DatePickerInput"
+                        />
                     </InputGroup>
                 </DateRangePicker>
-                <span 
-                    className='DatePickerSpan'
-                    onClick = { () => this.onDateTimeChange( moment(this.state.datetime + 60 * 60 * 1000) ) }
-                    id = "oneHourForward"
+                <span
+                    className="DatePickerSpan"
+                    onClick={() =>
+                        this.onDateTimeChange(
+                            moment(this.state.datetime + 60 * 60 * 1000)
+                        )
+                    }
+                    id="oneHourForward"
                 >
-                    <FontAwesomeIcon 
-                        icon = {faRightHour} 
-                        size = "2x" 
-                    /> 
+                    <FontAwesomeIcon icon={faRightHour} size="2x" />
                 </span>
-                <span 
-                    className='DatePickerSpan'
-                    onClick = { () => this.onDateTimeChange( moment(this.state.datetime + 24 * 60 * 60 * 1000) ) }
-                    id = "oneDayForward"
+                <span
+                    className="DatePickerSpan"
+                    onClick={() =>
+                        this.onDateTimeChange(
+                            moment(this.state.datetime + 24 * 60 * 60 * 1000)
+                        )
+                    }
+                    id="oneDayForward"
                 >
-                    <FontAwesomeIcon 
-                        icon = {faRightDay} 
-                        size = "2x" 
-                    /> 
+                    <FontAwesomeIcon icon={faRightDay} size="2x" />
                 </span>
-                <Tooltip 
-                    placement = "bottom"
-                    isOpen = {this.state.tooltipBackHourOpen}
-                    target = "oneHourBack"
-                    toggle = { () => this.toggleTooltip("tooltipBackHourOpen") }
+                <Tooltip
+                    placement="bottom"
+                    isOpen={this.state.tooltipBackHourOpen}
+                    target="oneHourBack"
+                    toggle={() => this.toggleTooltip("tooltipBackHourOpen")}
                 >
                     <Trans id="tooltipForwardkHour">One hour backward</Trans>
                 </Tooltip>
-                <Tooltip 
-                    placement = "bottom"
-                    isOpen = {this.state.tooltipForwardHourOpen}
-                    target = "oneHourForward"
-                    toggle = { () => this.toggleTooltip("tooltipForwardHourOpen") }
+                <Tooltip
+                    placement="bottom"
+                    isOpen={this.state.tooltipForwardHourOpen}
+                    target="oneHourForward"
+                    toggle={() => this.toggleTooltip("tooltipForwardHourOpen")}
                 >
                     <Trans id="tooltipBackHour">One hour forward</Trans>
                 </Tooltip>
-                <Tooltip 
-                    placement = "bottom"
-                    isOpen = {this.state.tooltipForwardDayOpen}
-                    target = "oneDayForward"
-                    toggle = { () => this.toggleTooltip("tooltipForwardDayOpen") }
+                <Tooltip
+                    placement="bottom"
+                    isOpen={this.state.tooltipForwardDayOpen}
+                    target="oneDayForward"
+                    toggle={() => this.toggleTooltip("tooltipForwardDayOpen")}
                 >
                     <Trans id="tooltipForwardDay">One day forward</Trans>
                 </Tooltip>
-                <Tooltip 
-                    placement = "bottom"
-                    isOpen = {this.state.tooltipBackDayOpen}
-                    target = "oneDayBack"
-                    toggle = { () => this.toggleTooltip("tooltipBackDayOpen") }
+                <Tooltip
+                    placement="bottom"
+                    isOpen={this.state.tooltipBackDayOpen}
+                    target="oneDayBack"
+                    toggle={() => this.toggleTooltip("tooltipBackDayOpen")}
                 >
                     <Trans id="tooltipBackDay">One day backward</Trans>
                 </Tooltip>
-                <Tooltip 
-                    placement = "bottom"
-                    isOpen = {this.state.tooltipCalendarOpen}
-                    target = "ParamodCalendar"
-                    toggle = { () => this.toggleTooltip("tooltipCalendarOpen") }
+                <Tooltip
+                    placement="bottom"
+                    isOpen={this.state.tooltipCalendarOpen}
+                    target="ParamodCalendar"
+                    toggle={() => this.toggleTooltip("tooltipCalendarOpen")}
                 >
-                    <Trans id="tooltipCalenda">Click to select date and hour</Trans>
+                    <Trans id="tooltipCalenda">
+                        Click to select date and hour
+                    </Trans>
                 </Tooltip>
             </div>
         );

@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-import React from 'react';
+import React from "react";
 import {
     Nav,
     NavItem,
@@ -8,41 +8,41 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 function makeLinkItem(menu, lang, key) {
-    let lg = (menu.lang === undefined) ? '/' + lang : '/' + menu.lang;
+    let lg = menu.lang === undefined ? "/" + lang : "/" + menu.lang;
 
     if (menu.link !== undefined) {
         return (
-            <Link {...{disabled:menu.disabled,to:lg + menu.link, key: key}} className='nav-link'>
+            <Link
+                {...{ disabled: menu.disabled, to: lg + menu.link, key: key }}
+                className="nav-link"
+            >
                 {menu.item}
             </Link>
         );
     } else if (menu.href !== undefined) {
         return (
-            <NavLink {...{disabled:menu.disabled, href:lg+menu.href}}>
+            <NavLink {...{ disabled: menu.disabled, href: lg + menu.href }}>
                 {menu.item}
             </NavLink>
         );
     } else if (menu.external !== undefined) {
         return (
-            <NavLink {...{disabled:menu.disabled, href:menu.external}}>
+            <NavLink {...{ disabled: menu.disabled, href: menu.external }}>
                 {menu.item}
             </NavLink>
         );
     } else {
-        return (
-            <NavLink {...{disabled:menu.disabled}}>
-                {menu.item}
-            </NavLink>
-        );
+        return <NavLink {...{ disabled: menu.disabled }}>{menu.item}</NavLink>;
     }
 }
 
-function makeMenuList (menu, lang, context) {
-    let m, list = [];
+function makeMenuList(menu, lang, context) {
+    let m,
+        list = [];
 
     for (m in menu) {
         if (menu.hasOwnProperty(m)) {
@@ -52,64 +52,70 @@ function makeMenuList (menu, lang, context) {
     return list;
 }
 
-function makeSideMenu (menu, lang, place) {
+function makeSideMenu(menu, lang, place) {
     return (
         <Nav className={place} navbar>
-            {makeMenuList(menu, lang, 'SideMenu')}
+            {makeMenuList(menu, lang, "SideMenu")}
         </Nav>
     );
 }
 
-function makeDropdownList(menu, lang, context = 'Menubar') {
-    let m, list = [];
+function makeDropdownList(menu, lang, context = "Menubar") {
+    let m,
+        list = [];
 
     for (m in menu) {
         if (menu.hasOwnProperty(m)) {
             if (menu[m].menu === undefined) {
-                list.push((
-                    <DropdownItem key={'Dropdown' +  context + m}>
+                list.push(
+                    <DropdownItem key={"Dropdown" + context + m}>
                         {makeLinkItem(menu[m], lang, context + m)}
                     </DropdownItem>
-                ));
+                );
             } else {
-                list.push((
+                list.push(
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav caret>
                             {menu[m].item}
                         </DropdownToggle>
-                        <DropdownMenu left='true'>
+                        <DropdownMenu left="true">
                             {makeDropdownList(menu[m].menu, lang, context)}
                         </DropdownMenu>
                     </UncontrolledDropdown>
-                ));
+                );
             }
         }
     }
     return list;
 }
 
-function makeMenuBarList(menu, lang, context = 'Menubar') {
-    let m, list = [];
+function makeMenuBarList(menu, lang, context = "Menubar") {
+    let m,
+        list = [];
 
     for (m in menu) {
         if (menu.hasOwnProperty(m)) {
             if (menu[m].menu === undefined) {
-                list.push((
-                    <NavItem key = {'NavItem' + context + m}>
+                list.push(
+                    <NavItem key={"NavItem" + context + m}>
                         {makeLinkItem(menu[m], lang, context + m)}
                     </NavItem>
-                ));
+                );
             } else {
-                list.push((
-                    <UncontrolledDropdown nav inNavbar key={'UncontrolledDropdown' + context}>
+                list.push(
+                    <UncontrolledDropdown
+                        nav
+                        inNavbar
+                        key={"UncontrolledDropdown" + context}
+                    >
                         <DropdownToggle nav caret>
                             {menu[m].item}
                         </DropdownToggle>
-                        <DropdownMenu left='true'>
+                        <DropdownMenu left="true">
                             {makeDropdownList(menu[m].menu, lang, context)}
                         </DropdownMenu>
                     </UncontrolledDropdown>
-                ));
+                );
             }
         }
     }
@@ -118,10 +124,17 @@ function makeMenuBarList(menu, lang, context = 'Menubar') {
 
 function makeMenuBar(menu, lang, place) {
     return (
-        <Nav className={place} navbar key = {'MenuBar' + place}>
-            {makeMenuBarList(menu, lang, 'MenuBar')}
+        <Nav className={place} navbar key={"MenuBar" + place}>
+            {makeMenuBarList(menu, lang, "MenuBar")}
         </Nav>
     );
 }
 
-export {makeLinkItem, makeMenuList, makeSideMenu, makeDropdownList, makeMenuBarList, makeMenuBar}
+export {
+    makeLinkItem,
+    makeMenuList,
+    makeSideMenu,
+    makeDropdownList,
+    makeMenuBarList,
+    makeMenuBar
+};

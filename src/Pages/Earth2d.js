@@ -1,11 +1,9 @@
 /*jshint esversion: 6 */
-import React from 'react';
-import Earth from './EarthTemplate';
-import ParamodChart from './Components/ParamodChart';
+import React from "react";
+import Earth from "./EarthTemplate";
+import ParamodChart from "./Components/ParamodChart";
 class App extends Earth {
-
     constructor(props) {
-        
         super(props);
         this.onDateChange = this.onDateChange.bind(this);
 
@@ -23,7 +21,12 @@ class App extends Earth {
 
     render() {
         return (
-            <Earth ParamodChart = {ParamodChart} match = {this.props.match} view3d = {false} history = {this.props.history}/>
+            <Earth
+                ParamodChart={ParamodChart}
+                match={this.props.match}
+                view3d={false}
+                history={this.props.history}
+            />
         );
     }
 }
