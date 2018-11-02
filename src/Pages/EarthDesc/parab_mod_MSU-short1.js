@@ -10,7 +10,7 @@ import MathJax from "react-mathjax2";
 import ReactHtmlParser from "react-html-parser";
 
 let Desc = `
-	MathJAX test: \\(B_m=B_{sd}+B_t+B_r+B_{sr}+B_{fac}\\)
+	
 		<center>
 			<h2>
 				Paraboloid model description
@@ -21,7 +21,7 @@ let Desc = `
 				magnetosphere as a superposition of the ring current
 				<i>
 					B<sub>r</sub>
-				</i>
+				</i> \\(B_r\\)
 				, of the tail current including the closure currents on the
 				magnetopause
 				<i>
@@ -43,6 +43,7 @@ let Desc = `
 			</p>
 
 			<p align="center">
+				$$B_m=B_{sd}+B_t+B_r+B_{sr}+B_{fac}$$
 				<br />
 				<i>
 					B<sub>m</sub> = B<sub>sd</sub>
@@ -262,41 +263,40 @@ let Desc = `
 	
 `;
 
-let test = Desc.replace("\\(", '<span class="MathJax">').replace(
-	"\\)",
-	"</span>"
-);
-
-// export default (
-// 	<MathJax.Context input="tex">
-// 		<MathJax.Text text={Desc}/>
-// 	</MathJax.Context>
-// );
+let test = Desc.replace("\\(", '<span class="MathJax">')
+	.replace("\\)", "</span>")
+	.replace(/\$\$(.*?)\$\$/gi, '<span class="MathJaxFormula">$&</span>')
+	.replace(/\$/g, "");
 
 export default (
 	<div>
 		{ReactHtmlParser(test, {
 			transform: function(node) {
+				console.log(node);
 				if (
 					node.type === "text" &&
 					node.parent !== null &&
-					node.parent.type === "tag" &&
-					node.parent.attribs.class === "MathJax"
+					node.parent.type === "tag"
 				) {
-					return (
-						<MathJax.Context input="tex" key={node.data}>
-							<MathJax.Node inline>
-								{node.data}
-							</MathJax.Node>
-						</MathJax.Context>
-					);
+					if (node.parent.attribs.class === "MathJax") {
+						return (
+							<MathJax.Context input="tex" key={node.data}>
+								<MathJax.Node inline>{node.data}</MathJax.Node>
+							</MathJax.Context>
+						);
+					} else if (node.parent.attribs.class === "MathJaxFormula") {
+						return (
+							<div>
+								<MathJax.Context input="tex" key={node.data}>
+									<div>
+										<MathJax.Node>{node.data}</MathJax.Node>
+									</div>
+								</MathJax.Context>
+							</div>
+						);
+					}
 				}
 			}
 		})}
-		<MathJax.Context input="tex">
-			<MathJax.Node>
-				MathJAX test: {"$B_m=B_{sd}+B_t+B_r+B_{sr}+B_{fac}$"}
-			</MathJax.Node>
-		</MathJax.Context>
 	</div>
 );
