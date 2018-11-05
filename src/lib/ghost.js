@@ -1,0 +1,153 @@
+import * as axios from "axios";
+import React from "react";
+import MathJax from "react-mathjax2";
+import ReactHtmlParser from "react-html-parser";
+import "./css/screen.css";
+
+class Ghost {
+	constructor() {
+		this.texts = [];
+		this.langs = {
+			ru: [],
+			en: []
+		};
+		this.init = this.init.bind(this);
+		this.get = this.get.bind(this);
+		this.getText = this.getText.bind(this);
+	}
+
+	init() {
+		let self = this;
+
+		window.ghost.init({
+			clientId: "ghost-frontend",
+			clientSecret: "28f34149a037"
+		});
+
+		return new Promise(function(resolve, reject) {
+			axios
+				.get(
+					window.ghost.url.api("posts", {
+						include: "tags",
+						filter: "tag:magnetosphere-ru"
+					})
+				)
+				.then(
+					function(response) {
+						self.texts = response.data.posts.map(function(post) {
+							return {
+								html: post.html,
+								title: post.title,
+								tags: post.tags.map(function(tag) {
+									return tag.name;
+								})
+							};
+						});
+						self.texts.map(function(text) {
+							let ru = text.tags.includes("ru"),
+								en = text.tags.includes("en");
+							if (ru) {
+								self.langs.ru.push(text);
+							} else if (en) {
+								self.langs.en.push(text);
+							}
+						});
+						console.log(self.texts);
+						console.log(self.langs);
+						resolve();
+					},
+					function(error) {
+						resolve();
+					}
+				);
+		});
+	}
+
+	getText(tag, lang) {
+		let texts = this.langs[lang],
+			findedTexts = texts.filter(function(text) {
+				return text.tags.includes(tag);
+			});
+
+		if (findedTexts.length > 0) {
+			return {
+				title: findedTexts[0].title,
+				html: findedTexts[0].html
+			};
+		} else {
+			return {
+				title: "There is no text for this page.",
+				html: ""
+			};
+		}
+	}
+
+	get(tag, lang) {
+		let text = this.getText(tag, lang),
+			html,
+			mathHtml,
+			imgHtml;
+		console.log("texts",this.texts);
+		html = "<h2>" + text.title + "</h2>" + text.html;
+
+		mathHtml = html
+			.replace("\\(", '<span class="MathJax">')
+			.replace("\\)", "</span>")
+			.replace(
+				/\$\$(.*?)\$\$/gi,
+				'<span class="MathJaxFormula">$&</span>'
+			)
+			.replace(/\$/g, "");
+
+		imgHtml = mathHtml.replace(/<img src=\"\/content\/images/gi, '<img src=\"http://localhost:2368/content/images');
+
+		return (
+			<div>
+				{ReactHtmlParser(imgHtml, {
+					transform: function(node) {
+						console.log(node);
+						if (
+							node.type === "text" &&
+							node.parent !== null &&
+							node.parent.type === "tag"
+						) {
+							if (node.parent.attribs.class === "MathJax") {
+								return (
+									<MathJax.Context
+										input="tex"
+										key={node.data}
+									>
+										<MathJax.Node inline>
+											{node.data}
+										</MathJax.Node>
+									</MathJax.Context>
+								);
+							} else if (
+								node.parent.attribs.class === "MathJaxFormula"
+							) {
+								return (
+									<span key={node.data}>
+										<MathJax.Context
+											input="tex"
+											key={node.data}
+										>
+											<span>
+												<MathJax.Node>
+													{node.data}
+												</MathJax.Node>
+											</span>
+										</MathJax.Context>
+									</span>
+								);
+							}
+						}
+					}
+				})}
+			</div>
+		);
+	}
+}
+
+let ghost = new Ghost();
+
+export default ghost;
