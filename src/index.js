@@ -11,7 +11,6 @@ import * as serviceWorker from "./serviceWorker";
 import ghost from "./lib/ghost";
 
 ghost.init().then(function() {
-	console.log("texts loaded");
 	ReactDOM.render(
 		<BrowserRouter>
 			<Switch>

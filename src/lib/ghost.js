@@ -11,6 +11,7 @@ class Ghost {
 			ru: [],
 			en: []
 		};
+		this.base_url = "";
 		this.init = this.init.bind(this);
 		this.get = this.get.bind(this);
 		this.getText = this.getText.bind(this);
@@ -24,6 +25,8 @@ class Ghost {
 			clientSecret: "28f34149a037"
 		});
 
+		this.base_url = window.ghost.url.api().replace(/\/ghost\/(.*?)$/, "");
+		
 		return new Promise(function(resolve, reject) {
 			axios
 				.get(
@@ -43,7 +46,7 @@ class Ghost {
 								})
 							};
 						});
-						self.texts.map(function(text) {
+						self.texts.forEach(function(text) {
 							let ru = text.tags.includes("ru"),
 								en = text.tags.includes("en");
 							if (ru) {
@@ -52,8 +55,8 @@ class Ghost {
 								self.langs.en.push(text);
 							}
 						});
-						console.log(self.texts);
-						console.log(self.langs);
+						// console.log(self.texts);
+						// console.log(self.langs);
 						resolve();
 					},
 					function(error) {
@@ -87,59 +90,61 @@ class Ghost {
 			html,
 			mathHtml,
 			imgHtml;
-		console.log("texts",this.texts);
+		// console.log("texts",this.texts);
 		html = "<h2>" + text.title + "</h2>" + text.html;
 
 		mathHtml = html
-			.replace("\\(", '<span class="MathJax">')
-			.replace("\\)", "</span>")
+			.replace(/\\\(/, '<span class="MathJax">')
+			.replace(/\\\)/, "</span>")
 			.replace(
-				/\$\$(.*?)\$\$/gi,
+				/\$\$(.*?)\$\$/,
 				'<span class="MathJaxFormula">$&</span>'
 			)
 			.replace(/\$/g, "");
 
-		imgHtml = mathHtml.replace(/<img src=\"\/content\/images/gi, '<img src=\"http://localhost:2368/content/images');
+		imgHtml = mathHtml.replace(/<img src="\/content\/images/gi, `<img src="http:${this.base_url}/content/images`);
 
 		return (
 			<div>
 				{ReactHtmlParser(imgHtml, {
 					transform: function(node) {
-						console.log(node);
-						if (
-							node.type === "text" &&
-							node.parent !== null &&
-							node.parent.type === "tag"
+						if (node.type === "tag" && node.attribs.class === "MathJax") {
+							// console.log(node.children[0].data);
+							return (
+								<MathJax.Context
+									input="tex"
+									key={node.children[0].data}
+								>
+									<MathJax.Node inline>
+										{node.children[0].data}
+									</MathJax.Node>
+								</MathJax.Context>
+							);
+						} else if (
+							node.type === "tag" &&
+							node.attribs.class === "MathJaxFormula"
 						) {
-							if (node.parent.attribs.class === "MathJax") {
-								return (
+							return (
+								<span key={node.children[0].data}>
 									<MathJax.Context
 										input="tex"
-										key={node.data}
+										key={node.children[0].data}
 									>
-										<MathJax.Node inline>
-											{node.data}
-										</MathJax.Node>
+										<span key={node.children[0].data}>
+											<MathJax.Node>
+												{node.children[0].data}
+											</MathJax.Node>
+										</span>
 									</MathJax.Context>
-								);
-							} else if (
-								node.parent.attribs.class === "MathJaxFormula"
-							) {
-								return (
-									<span key={node.data}>
-										<MathJax.Context
-											input="tex"
-											key={node.data}
-										>
-											<span>
-												<MathJax.Node>
-													{node.data}
-												</MathJax.Node>
-											</span>
-										</MathJax.Context>
-									</span>
-								);
-							}
+								</span>
+							);
+						} else if (
+							node.type === "text" &&
+							node.parent !== null &&
+							(node.parent.attribs.class === "MathJax" ||
+								node.parent.attribs.class === "MathJaxFormula")
+						) {
+							return null;
 						}
 					}
 				})}
@@ -151,3 +156,44 @@ class Ghost {
 let ghost = new Ghost();
 
 export default ghost;
+
+// {ReactHtmlParser(imgHtml, {
+// 					transform: function(node) {
+// 						if (
+// 							node.type === "text" &&
+// 							node.parent !== null &&
+// 							node.parent.type === "tag"
+// 						) {
+// 							if (node.parent.attribs.class === "MathJax") {
+// 								console.log(node);
+// 								return (
+// 									<MathJax.Context
+// 										input="tex"
+// 										key={node.data}
+// 									>
+// 										<MathJax.Node inline>
+// 											{node.data}
+// 										</MathJax.Node>
+// 									</MathJax.Context>
+// 								);
+// 							} else if (
+// 								node.parent.attribs.class === "MathJaxFormula"
+// 							) {
+// 								return (
+// 									<span key={node.data}>
+// 										<MathJax.Context
+// 											input="tex"
+// 											key={node.data}
+// 										>
+// 											<span>
+// 												<MathJax.Node>
+// 													{node.data}
+// 												</MathJax.Node>
+// 											</span>
+// 										</MathJax.Context>
+// 									</span>
+// 								);
+// 							}
+// 						}
+// 					}
+// 				})}
