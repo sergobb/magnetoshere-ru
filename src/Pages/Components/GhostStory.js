@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MathJax from "react-mathjax2";
+import ReactMathJax from "react-mathjax2";
 import ReactHtmlParser from "react-html-parser";
 import "./css/screen.css";
 
@@ -9,7 +9,12 @@ class GhostStory extends Component {
 		this.base_url = window.ghost.url.api().replace(/\/ghost\/(.*?)$/, "");
 	}
 	componentDidMount() {
+		let MathJax = window.MathJax;
 		// MathJax.Hub.Queue(MathJax.Hub.Typeset());
+	}
+	componentDidUpdate() {
+		let MathJax = window.MathJax;
+		MathJax.Hub.Queue(MathJax.Hub.Typeset());
 	}
 	render() {
 		let text = this.props.ghostText,
@@ -40,7 +45,7 @@ class GhostStory extends Component {
 						) {
 							// console.log(node.children[0].data);
 							return (
-								<MathJax.Context
+								<ReactMathJax.Context
 									input="tex"
 									key={node.children[0].data}
 									options={{
@@ -49,10 +54,10 @@ class GhostStory extends Component {
 										}
 									}}
 								>
-									<MathJax.Node inline>
+									<ReactMathJax.Node inline>
 										{node.children[0].data}
-									</MathJax.Node>
-								</MathJax.Context>
+									</ReactMathJax.Node>
+								</ReactMathJax.Context>
 							);
 						} else if (
 							node.type === "tag" &&
@@ -60,16 +65,16 @@ class GhostStory extends Component {
 						) {
 							return (
 								<span key={node.children[0].data}>
-									<MathJax.Context
+									<ReactMathJax.Context
 										input="tex"
 										key={node.children[0].data}
 									>
 										<span key={node.children[0].data}>
-											<MathJax.Node>
+											<ReactMathJax.Node>
 												{node.children[0].data}
-											</MathJax.Node>
+											</ReactMathJax.Node>
 										</span>
-									</MathJax.Context>
+									</ReactMathJax.Context>
 								</span>
 							);
 						} else if (
