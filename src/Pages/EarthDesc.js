@@ -7,9 +7,9 @@ import catalogRu from "../locales/ru/messages.js";
 import catalogEn from "../locales/en/messages.js";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-// import Desc from "./EarthDesc/parab_mod_MSU-short1.js";
 import SideMenu from "./Components/SideMenu";
 import ghost from "../lib/ghost";
+import GhostStory from "./Components/GhostStory";
 
 class App extends Component {
     constructor(props) {
@@ -45,8 +45,9 @@ class App extends Component {
                             lg={{ size: 6 }}
                             xl={{ size: 6 }}
                         >
-                            {/*Desc*/}
-                            {ghost.get("earthModelDesc",this.state.lang)}
+                            <GhostStory 
+                                ghostText = {ghost.getText("earthModelDesc",this.state.lang)}
+                            />
                         </Col>
                         <Col
                             lg={{ size: 3 }}
