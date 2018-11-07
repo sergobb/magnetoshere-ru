@@ -59,7 +59,7 @@ let menu = [
             lang: "en"
         },
         menuOldSite: {
-            external: "http://www.magnetosphere.ru/old.html",
+            external: "http://www.magnetosphere.ru/old/",
             item: <Trans id="menuOldSite">Old Site</Trans>
         }
     }

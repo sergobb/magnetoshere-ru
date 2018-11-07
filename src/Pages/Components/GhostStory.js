@@ -8,36 +8,37 @@ class GhostStory extends Component {
 		super(props);
 		this.base_url = window.ghost.url.api().replace(/\/ghost\/(.*?)$/, "");
 	}
-	componentDidMount() {
-		let MathJax = window.MathJax;
-		// MathJax.Hub.Queue(MathJax.Hub.Typeset());
-	}
-	componentDidUpdate() {
-		let MathJax = window.MathJax;
-		MathJax.Hub.Queue(MathJax.Hub.Typeset());
-	}
-	render() {
+
+	componentWillMount() {
 		let text = this.props.ghostText,
-			html,
-			mathHtml,
-			imgHtml;
-		// console.log("texts",this.texts);
-		html = "<h2>" + text.title + "</h2>" + text.html;
+			html = "<h2>" + text.title + "</h2>" + text.html,
+			mathHtml = html
+				.replace(/\\\(/g, '<span class="MathJax">')
+				.replace(/\\\)/g, "</span>")
+				.replace(
+					/\$\$(.*?)\$\$/g,
+					'<span class="MathJaxFormula">$&</span>'
+				)
+				.replace(/\$\$/g, "")
+				.replace(
+					/\$(.*?)\$/g,
+					'<span class="MathJax">$&</span>'
+				)
+				.replace(/\$/g, ""),
+			imgHtml = mathHtml.replace(
+				/<img src="\/content\/images/gi,
+				`<img src="http:${this.base_url}/content/images`
+			);
 
-		mathHtml = html
-			.replace(/\\\(/g, '<span class="MathJax">')
-			.replace(/\\\)/g, "</span>")
-			.replace(/\$\$(.*?)\$\$/, '<span class="MathJaxFormula">$&</span>')
-			.replace(/\$/g, "");
+		this.setState({
+			html: imgHtml
+		});
+	}
 
-		imgHtml = mathHtml.replace(
-			/<img src="\/content\/images/gi,
-			`<img src="http:${this.base_url}/content/images`
-		);
-
+	render() {
 		return (
 			<div>
-				{ReactHtmlParser(imgHtml, {
+				{ReactHtmlParser(this.state.html, {
 					transform: function(node) {
 						if (
 							node.type === "tag" &&
@@ -48,10 +49,12 @@ class GhostStory extends Component {
 								<ReactMathJax.Context
 									input="tex"
 									key={node.children[0].data}
+									delay={400}
 									options={{
 										CommonHTML: {
 											scale: 100
-										}
+										},
+										preview: "none"
 									}}
 								>
 									<ReactMathJax.Node inline>
@@ -68,6 +71,7 @@ class GhostStory extends Component {
 									<ReactMathJax.Context
 										input="tex"
 										key={node.children[0].data}
+										delay={200}
 									>
 										<span key={node.children[0].data}>
 											<ReactMathJax.Node>

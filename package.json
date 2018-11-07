@@ -27,11 +27,12 @@
         "react-bootstrap-daterangepicker": "^4.1.0",
         "react-dom": "^16.5.2",
         "react-highcharts": "^16.0.2",
+        "react-html-parser": "^2.0.2",
+        "react-mathjax2": "0.0.2",
         "react-router-dom": "^4.3.1",
         "react-scripts": "2.0.4",
-        "reactstrap": "^6.5.0",
-        "react-html-parser": "^2.0.2",
-        "react-mathjax2": "0.0.2"
+        "react-stickynode": "^2.1.0",
+        "reactstrap": "^6.5.0"
     },
     "scripts": {
         "add-locale": "lingui add-locale",

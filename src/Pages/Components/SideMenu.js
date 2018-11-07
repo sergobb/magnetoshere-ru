@@ -4,6 +4,7 @@ import { Card, CardTitle, CardBody, CardHeader, Navbar } from "reactstrap";
 import { Trans } from "@lingui/macro";
 import { menu } from "./menuItems";
 import { makeSideMenu } from "./menuFuncs";
+import Sticky from "react-stickynode";
 
 class SideMenu extends Component {
     constructor(props) {
@@ -25,16 +26,20 @@ class SideMenu extends Component {
 
         if (SideMenu !== null) {
             return (
-                <Card body>
-                    <CardHeader>
-                        <CardTitle>
-                            <Trans id="Earth">Earth</Trans>
-                        </CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                        <Navbar light>{makeSideMenu(SideMenu, lang)}</Navbar>
-                    </CardBody>
-                </Card>
+                <Sticky innerZ={98} top={80}>
+                    <Card body>
+                        <CardHeader>
+                            <CardTitle>
+                                <Trans id="Earth">Earth</Trans>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                            <Navbar light>
+                                {makeSideMenu(SideMenu, lang)}
+                            </Navbar>
+                        </CardBody>
+                    </Card>
+                </Sticky>
             );
         } else {
             return null;
