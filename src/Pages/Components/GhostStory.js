@@ -67,11 +67,11 @@ class GhostStory extends Component {
 										delay={10 + (counter += 5)}
 										script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS_SVG"
 										options={{
-											TeX: {
-												equationNumbers: {
-													autoNumber: "all"
-												}
-											},
+											// TeX: {
+											// 	equationNumbers: {
+											// 		autoNumber: "all"
+											// 	}
+											// },
 											SVG: {
 												linebreaks: {
 													automatic: true,
