@@ -20,10 +20,7 @@ class GhostStory extends Component {
 					'<span class="MathJaxFormula">$&</span>'
 				)
 				.replace(/\$\$/g, "")
-				.replace(
-					/\$(.*?)\$/g,
-					'<span class="MathJax">$&</span>'
-				)
+				.replace(/\$(.*?)\$/g, '<span class="MathJax">$&</span>')
 				.replace(/\$/g, ""),
 			imgHtml = mathHtml.replace(
 				/<img src="\/content\/images/gi,
@@ -36,6 +33,7 @@ class GhostStory extends Component {
 	}
 
 	render() {
+		let counter = 0;
 		return (
 			<div>
 				{ReactHtmlParser(this.state.html, {
@@ -49,13 +47,8 @@ class GhostStory extends Component {
 								<ReactMathJax.Context
 									input="tex"
 									key={node.children[0].data}
-									delay={400}
-									options={{
-										CommonHTML: {
-											scale: 100
-										},
-										preview: "none"
-									}}
+									delay={200 + (counter += 10)}
+									script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS_SVG"
 								>
 									<ReactMathJax.Node inline>
 										{node.children[0].data}
@@ -71,7 +64,21 @@ class GhostStory extends Component {
 									<ReactMathJax.Context
 										input="tex"
 										key={node.children[0].data}
-										delay={200}
+										delay={10 + (counter += 5)}
+										script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS_SVG"
+										options={{
+											TeX: {
+												equationNumbers: {
+													autoNumber: "all"
+												}
+											},
+											SVG: {
+												linebreaks: {
+													automatic: true,
+													width: "90% container"
+												}
+											}
+										}}
 									>
 										<span key={node.children[0].data}>
 											<ReactMathJax.Node>
