@@ -68,7 +68,7 @@ function makeDropdownList(menu, lang, context = "Menubar") {
         if (menu.hasOwnProperty(m)) {
             if (menu[m].menu === undefined) {
                 list.push(
-                    <DropdownItem key={"Dropdown" + context + m}>
+                    <DropdownItem tag="a" key={"Dropdown" + context + m}>
                         {makeLinkItem(menu[m], lang, context + m)}
                     </DropdownItem>
                 );
