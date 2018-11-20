@@ -15,7 +15,7 @@ class App extends Component {
         this.state = {
             series: this.setSeries(props.data),
             series_l: this.setSeriesLight(props.data)
-        }
+        };
     }
 
     setSeries(data, indexes) {
@@ -123,6 +123,7 @@ class App extends Component {
     }
 
     componentWillReceiveProps(props) {
+        // console.log(props.data);
         this.setState({
             series: this.setSeries(props.data),
             series_l: this.setSeriesLight(props.data)
@@ -130,6 +131,7 @@ class App extends Component {
     }
 
     render() {
+        // console.log("render");
         var config =
             this.props.config !== undefined
                 ? this.props.config
@@ -280,7 +282,6 @@ class App extends Component {
 
     afterRender(chart) {
         var H = ReactHighcharts.Highcharts,
-            self = this,
             l_series = this.state.series_l,
             b_series = this.state.series;
         function dragStart(eStart) {
@@ -313,34 +314,48 @@ class App extends Component {
             }
 
             function mouseDragStop(e) {
-                chart.unbindDragMouse(e);
-                chart.update(
-                    {
-                        series: b_series
-                    },
-                    undefined,
-                    true,
-                    false
-                );   
+                if (chart.unbindDragMouse !== undefined) {
+                    chart.unbindDragMouse(e);
+                    chart.unbindMouseup(e);
+                    chart.update(
+                        {
+                            series: b_series
+                        },
+                        undefined,
+                        true,
+                        false
+                    );
+                }
             }
 
             function touchDragStop(e) {
-                chart.unbindDragTouch(e);
-                chart.update(
-                    {
-                        series: b_series
-                    },
-                    undefined,
-                    true,
-                    false
-                );   
+                if (chart.unbindDragTouch !== undefined) {
+                    chart.unbindDragTouch(e);
+                    chart.unbindTouchend(e);
+                    chart.update(
+                        {
+                            series: b_series
+                        },
+                        undefined,
+                        true,
+                        false
+                    );
+                }
             }
 
             chart.unbindDragMouse = H.addEvent(document, "mousemove", drag);
             chart.unbindDragTouch = H.addEvent(document, "touchmove", drag);
 
-            H.addEvent(document, "mouseup", mouseDragStop);// chart.unbindDragMouse);
-            H.addEvent(document, "touchend", touchDragStop);//chart.unbindDragTouch);
+            chart.unbindMouseup = H.addEvent(
+                document,
+                "mouseup",
+                mouseDragStop
+            ); // chart.unbindDragMouse);
+            chart.unbindTouchend = H.addEvent(
+                document,
+                "touchend",
+                touchDragStop
+            ); //chart.unbindDragTouch);
         }
         H.addEvent(chart.container, "mousedown", dragStart);
         H.addEvent(chart.container, "touchstart", dragStart);

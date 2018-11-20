@@ -38,39 +38,40 @@ class App extends Component {
         };
     }
 
-    componentWillReceiveProps(props) {
-        var self = this,
-            now = moment(),
-            duration = moment.duration(now.utcOffset(), "minutes"),
-            uts =
-                props.match.params.uts !== undefined
-                    ? props.match.params.uts
-                    : null;
+    // componentWillReceiveProps(props) {
+    //     var self = this,
+    //         now = moment(),
+    //         duration = moment.duration(now.utcOffset(), "minutes"),
+    //         uts =
+    //             props.match.params.uts !== undefined
+    //                 ? props.match.params.uts
+    //                 : null;
+    //     console.log('componentWillReceiveProps');
+            
+    //     if (props.match.params.uts !== this.props.match.params.uts) {
+    //         console.log('componentWillReceiveProps dont match');
+    //         // console.log(this.props.match.params.uts, props.match.params.uts);
 
-        if (props.match.params.uts !== this.props.match.params.uts) {
-            // console.log('componentWillReceiveProps');
-            // console.log(this.props.match.params.uts, props.match.params.uts);
+    //         now = now.subtract(duration);
+    //         if (uts !== null) {
+    //             now = moment(parseFloat(uts));
+    //         }
 
-            now = now.subtract(duration);
-            if (uts !== null) {
-                now = moment(parseFloat(uts));
-            }
-
-            paramodData
-                .get({
-                    datetime: now,
-                    view3d: this.state.view3d
-                })
-                .then(function(response) {
-                    var udt = moment(response.data.dt).format("x");
-                    // console.log(response.data.dt);
-                    self.setState({
-                        datetime: udt,
-                        data: response.data.data
-                    });
-                });
-        }
-    }
+    //         paramodData
+    //             .get({
+    //                 datetime: now,
+    //                 view3d: this.state.view3d
+    //             })
+    //             .then(function(response) {
+    //                 var udt = moment(response.data.dt).format("x");
+    //                 // console.log(response.data.dt);
+    //                 self.setState({
+    //                     datetime: udt,
+    //                     data: response.data.data
+    //                 });
+    //             });
+    //     }
+    // }
 
     componentDidMount() {
         var self = this,
@@ -99,12 +100,12 @@ class App extends Component {
                             self.state.lang
                         );
                     // console.log(response.data.dt);
-                    // self.setState({
-                    //     datetime: udt,
-                    //     data: response.data.data
-                    // });
-                    new_path = new_path.replace("/:uts/", "");
-                    self.props.history.push(new_path + "/" + udt);
+                    self.setState({
+                        datetime: udt,
+                        data: response.data.data
+                    });
+                    // new_path = new_path.replace("/:uts/", "");
+                    // self.props.history.push(new_path + "/" + udt);
                 });
         }
     }
@@ -123,13 +124,13 @@ class App extends Component {
                         ":lang",
                         self.state.lang
                     );
-                // self.setState({
-                //     datetime: udt,
-                //     data: response.data.data
-                // });
+                self.setState({
+                    datetime: udt,
+                    data: response.data.data
+                });
 
-                new_path = new_path.replace("/:uts/", "");
-                self.props.history.push(new_path + "/" + udt);
+                // new_path = new_path.replace("/:uts/", "");
+                // self.props.history.push(new_path + "/" + udt);
             });
     }
 
