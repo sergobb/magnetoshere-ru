@@ -32,8 +32,8 @@ class MenuBar extends Component {
                 <NavbarBrand href="/">PSWS</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    {makeMenuBar(menu[0], lang, "ml-left")}
-                    {makeMenuBar(menu[1], lang, "ml-auto")}
+                    {makeMenuBar(menu[0], lang, "ml-left", this.props.match.path)}
+                    {makeMenuBar(menu[1], lang, "ml-auto", this.props.match.path)}
                 </Collapse>
             </Navbar>
         );

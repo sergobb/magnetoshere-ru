@@ -43,7 +43,8 @@ class App extends Component {
                                 x: line[0],
                                 y: line[1],
                                 z: line[2],
-                                color: setColor(line[3])
+                                color: setColor(line[3]),
+                                value: line[3]
                             };
                         }),
                         type: "scatter3d",
@@ -110,7 +111,8 @@ class App extends Component {
                             radius: 1.5,
                             states: {
                                 hover: {
-                                    enabled: true
+                                    enabled: true,
+                                    radius: 3.5
                                 }
                             }
                         }
@@ -159,26 +161,28 @@ class App extends Component {
                               alpha: 10,
                               beta: -20,
                               depth: 550,
-                              viewDistance: 50,
                               fitToPlot: false,
                               frame: {
+                                  size: 4,
                                   bottom: {
-                                      size: 1,
-                                      color: "rgba(0,0,0,0.02)"
+                                      color: "rgba(0,0,0,0.03)"
                                   },
-                                  front: { size: 1, color: "rgba(0,0,0,0.04)" },
-                                  side: { size: 1, color: "rgba(0,0,0,0.06)" }
+                                  front: {
+                                      color: "rgba(0,0,0,0.06)"
+                                  },
+                                  left: {
+                                      visible: true,
+                                      color: "rgba(0,0,0,0.09)"
+                                  },
+                                  right: {
+                                      visible: false
+                                  }
                               }
                           }
                       },
                       plotOptions: {
-                          lineWidth: 2,
-                          scatter: {
-                              width: 10,
-                              height: 10,
-                              depth: 10
-                          },
                           scatter3d: {
+                              boostThreshold: 1,
                               marker: {
                                   enabled: false,
                                   symbol: "circle",
@@ -198,7 +202,17 @@ class App extends Component {
                           }
                       },
                       tooltip: {
-                          enabled: true
+                          enabled: true,
+                          formatter: function() {
+                              return 'Magnetic field value: ' + 
+                                this.point.options.value +
+                                '<br>x: ' +
+                                this.point.options.x +
+                                '<br>y: ' +
+                                this.point.options.y +
+                                '<br>z: ' +
+                                this.point.options.z;
+                          }
                       },
                       legend: {
                           enabled: false

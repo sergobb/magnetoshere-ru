@@ -152,6 +152,7 @@ class App extends Component {
                             <SideMenu
                                 lang={this.state.lang}
                                 context="menuEarth"
+                                match={this.props.match}
                             />
                         </Col>
                         <Col

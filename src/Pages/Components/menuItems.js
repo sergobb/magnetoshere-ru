@@ -5,6 +5,7 @@ let menu = [
     {
         menuAbout: {
             link: "/about/",
+            context: ["/:lang/about"],
             item: <Trans id="menuAbout">About</Trans>
         },
         menuMercury: {
@@ -13,9 +14,11 @@ let menu = [
         },
         menuEarth: {
             item: <Trans id="menuEarth">Earth</Trans>,
+            context: ["/:lang/earthdesc", "/:lang/earth2d", "/:lang/earth3d"],
             menu: {
                 menuEarthDescription: {
                     link: "/earthdesc/",
+                    context: ["/:lang/earthdesc"],
                     item: (
                         <Trans id="menuEarthDescription">
                             Model description
@@ -24,12 +27,14 @@ let menu = [
                 },
                 menuEarth2D: {
                     link: "/earth2d/",
+                    context: ["/:lang/earth2d"],
                     item: (
                         <Trans id="menuEarth2D">2D Magnetic Field Lines</Trans>
                     )
                 },
                 menuEarth3D: {
                     link: "/earth3d/",
+                    context: ["/:lang/earth3d"],
                     item: (
                         <Trans id="menuEarth3D">3D Magnetic Field Lines</Trans>
                     )

@@ -35,7 +35,7 @@ class SideMenu extends Component {
                         </CardHeader>
                         <CardBody>
                             <Navbar light>
-                                {makeSideMenu(SideMenu, lang)}
+                                {makeSideMenu(SideMenu, lang, "SideMenu", this.props.match.path)}
                             </Navbar>
                         </CardBody>
                     </Card>
