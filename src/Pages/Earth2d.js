@@ -2,6 +2,8 @@
 import React from "react";
 import Earth from "./EarthTemplate";
 import ParamodChart from "./Components/ParamodChart";
+import { Trans } from "@lingui/macro";
+
 class App extends Earth {
     constructor(props) {
         super(props);
@@ -10,7 +12,7 @@ class App extends Earth {
         this.state = {
             datetime: this.state.datetime,
             data: null,
-            version: '2d',
+            version: "2d",
             lang: this.state.lang
         };
     }
@@ -24,8 +26,14 @@ class App extends Earth {
             <Earth
                 ParamodChart={ParamodChart}
                 match={this.props.match}
-                version='2d'
+                version="2d"
+                context="menuEarth"
                 history={this.props.history}
+                title={
+                    <Trans id="earthModelDescTitle">
+                        Earth's magnetosphere model
+                    </Trans>
+                }
             />
         );
     }

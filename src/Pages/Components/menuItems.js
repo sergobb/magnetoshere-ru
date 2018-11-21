@@ -46,8 +46,18 @@ let menu = [
             item: <Trans id="menuJupiter">Jupiter</Trans>
         },
         menuSaturn: {
-            disabled: true,
-            item: <Trans id="menuSaturn">Saturn</Trans>
+            // disabled: true,
+            item: <Trans id="menuSaturn">Saturn</Trans>,
+            context: ["/:lang/saturn2d"],
+            menu: {
+                menuSaturn2D: {
+                    link: "/saturn2d/",
+                    context: ["/:lang/saturn2d"],
+                    item: (
+                        <Trans id="menuSaturn2D">2D Magnetic Field Lines</Trans>
+                    )
+                },
+            }
         }
     },
     {

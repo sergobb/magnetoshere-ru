@@ -6,7 +6,8 @@
         "src/Pages/Components/SideMenu.js",
         40
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "earthModelDesc": {
     "translation": "<0>Paraboloid model represents the magnetic fields in the Earth's magnetosphere as a superposition of the ring current <1>B<2>r</2></1> , of the tail current including the closure currents on the magnetopause <3>B<4>t</4></3>, of the Region 1 field-aligned currents <5>B<6>fac</6></5>, of the magnetopause currents screening the dipole field <7>B<8>sd</8></7> and of the magnetopause currents screening the ring current <9>B<10>sr</10></9> : </0><11> <12/> <13>B<14>m</14> = B<15>sd</15>(Ψ, R<16>1</16>) + B<17>t</17>(Ψ, R<18>1</18>, R<19>2</19>, Φ<20>∞</20>) + B<21>r</21>(Ψ, b<22>r</22>) + B<23>sr</23>(Ψ, R<24>1</24>, b) + B<25>fac</25></13>(I) (1) <26/> </11><27> The mathematical description of the model is published in [Alexeev et al., 2003]. The model is not connected with some database which imposes the limitations on the model’s region of validity, so it can describe the magnetic field during quiet as well as disturbed and extremely disturbed periods. The storm-time dynamics of the magnetosphere is represented as temporal variations of the large-scale current systems. </27> <28> <29/></28> <30> The model input are key parameters of the magnetospheric current systems, which represent their location and intensity:</30> <31><32>the geomagnetic dipole tilt angle <33>Ψ</33>;</32><34>the magnetopause stand-off distance <35>R<36>1</36></35>;</34><37>the distance to the inner edge of the tail current sheet <38>R<39>2</39></38>;</37><40>the magnetic flux through the tail lobes <41>Φ<42>∞</42></41>;</40><43>the ring current magnetic field at the Earth's center <44>b<45>r</45></44>;</43><46>the maximum intensity of the field-aligned current <47>I</47>.</46> </31> <48> <49/></48> <50><51><52><53><54><55> <56/> <57/> </55></54></53><58><59><60><61><62>The magnetic field structure in the noon-midnight magnetosphere cross-section on Jan 9, 1997, UT=12:00 and Jan 10, 1997, UT=10:00.</62></61></60></59></58></52></51> </50> <63> <64/></63> <65> The solar wind driving of the magnetospheric magnetic field is realized through the dependence of the model parameters on empirical data (solar wind plasma parameters, IMF, AL and Dst). The model input parameters can be calculated using so-called <66>submodels (</66>see <67> </67>[<68>Alexeev et al., 1996; Alexeev et al., 2003</68>]). <69>Submodels</69>, can be changed while the magnetic filed calculated by the model remains to be satisfying the boundary conditions. Such three-level structure of the model (data – parameters – magnetic field) allows flexible taking into account the data availability changing the “data-parameters” calculation scheme (changing the <70>submodels</70>).</65> <71> <72/></71> <73> <74/></73> <75> <76>Bibliography</76></75> <77> <78/></77> <79><80>Alexeev I.I., E.S.Belenkaya, S.Y.Bobrovnikov, V.V.Kalegaev, Modelling of the electromagnetic field in the interplanetary space and in the Earth's magnetosphere, Space Science Rev., <81>107</81>, 7 (2003).</80><82>Alexeev I. I., Belenkaya E. S., Kalegaev V. V., Feldstein Y. I., Grafe A., Magnetic storms and magnetotail currents, J. Geophys. Res., <83>101</83>, 7737 (1996).</82><84>Alexeev I. I., Feldstein Y. I., Modelling of geomagnetic field during magnetic storms and comparison with observations, Journ. Atm. Sol.-Terr. Phys., 63, 431 (2001).</84><85>Alexeev I.I.. Kalegaev V.V., Belenkaya E.S., Bobrovnikov S.Yu., Feldstein Ya.I., Gromova L.I., The Model Description of Magnetospheric Magnetic Field in the Course of Magnetic Storm on January 9-12, 1997, J. Geophys. Res.,<86>106</86>, 25683 (2001).</85><87>Belenkaya E.S., I.I.Alexeev, and C.R.Clauer, Field-aligned current  distribution in the transition current system, Journal of Geophys. Res., 109, A11207, doi:10.1029/2004JA010484, 2004.</87><88>Burton R. K., McPherron R. L., Russell C. T., An empirical relationship between interplanetary conditions and Dst, J. Geophys. Res., <89>80</89>, 4204 (1975).</88><90>Kalegaev V.V., Ganushkina N. Yu., Global magnetospheric dynamics during magnetic storms of different intensities. AGU Monograph \"Physics and Modeling of the Inner Magnetosphere\", 293, (2005).</90><91>Kalegaev V. V., Ganushkina N. Yu., Pulkkinen T. I., Kubyshkina  M. V., Singer H. J., Russell C. T., Relation between the ring current and the tail current during magnetic storms, Ann. Geoph. <92>26</92>, 523 (2005).   </91><93>V.V. Kalegaev, E.V. Makarenkov, Storm-time ring and tail current dynamics  under extremely disturbed conditions, Journ. of Atm. and Sol.-Terr. Phys., 70, 519 (2008), doi:10.1016/j.jastp.2007.08.029.</93><94>O’Brien T. P., McPherron R. L., An empirical phase space analysis of ring current dynamics: Solar wind control of injectionand decay, J. Geophys. Res., <95>105</95>, 7707 (2000).</94><96>Shue J.-H., Song P., Russel C. T., Steinberg J .T., Chao J. K., Zastenker G., Vaisberg O. L., Kokubun S., Singer H. S., Detman T. R., Kawano H., Magnetopause location under extreme solar wind conditions, J. Geophys. Res., 103,17691-17700, 1998. </96><97>Starkov, G.V., Planetary morphology of the aurora, In <98>Magnetosphere-Ionosphere Physics</98>, S.-Petersburg: Nauka, 85-90, 1993.</97> </79>",
@@ -16,15 +17,20 @@
         "src/Pages/EarthDesc/parab_mod_MSU-short.js",
         11
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "earthModelDescTitle": {
     "translation": "Earth's magnetosphere model",
     "defaults": "Earth's magnetosphere model",
     "origin": [
       [
-        "src/Pages/EarthTemplate.js",
-        93
+        "src/Pages/Earth2d.js",
+        33
+      ],
+      [
+        "src/Pages/Earth3d.js",
+        33
       ]
     ]
   },
@@ -36,15 +42,16 @@
         "src/Pages/EarthDesc/parab_mod_MSU-short.js",
         9
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "headerTitle": {
     "translation": "Planetary Space Weather Service at <0>SINP</0> <1>MSU</1>",
     "defaults": "Planetary Space Weather Service at <0>SINP</0> <1>MSU</1>",
     "origin": [
       [
-        "src/Pages/topLogo.js",
-        35
+        "src/Pages/Components/topLogo.js",
+        51
       ]
     ]
   },
@@ -64,11 +71,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        42
-      ],
-      [
-        "src/Pages/MenuBar.js",
-        81
+        66
       ]
     ]
   },
@@ -79,10 +82,6 @@
       [
         "src/Pages/Components/menuItems.js",
         16
-      ],
-      [
-        "src/Pages/MenuBar.js",
-        58
       ]
     ]
   },
@@ -92,7 +91,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        24
+        32
       ]
     ]
   },
@@ -102,7 +101,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        28
+        39
       ]
     ]
   },
@@ -112,7 +111,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        20
+        23
       ]
     ]
   },
@@ -122,7 +121,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        34
+        46
       ]
     ]
   },
@@ -132,7 +131,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        48
+        73
       ]
     ]
   },
@@ -142,7 +141,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        45
+        69
       ]
     ]
   },
@@ -162,7 +161,7 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        52
+        78
       ]
     ]
   },
@@ -172,7 +171,27 @@
     "origin": [
       [
         "src/Pages/Components/menuItems.js",
-        38
+        50
+      ]
+    ]
+  },
+  "menuSaturn2D": {
+    "translation": "2D Magnetic Field Lines",
+    "defaults": "2D Magnetic Field Lines",
+    "origin": [
+      [
+        "src/Pages/Components/menuItems.js",
+        57
+      ]
+    ]
+  },
+  "saturnModelDescTitle": {
+    "translation": "Saturn magnetosphere model",
+    "defaults": "Saturn magnetosphere model",
+    "origin": [
+      [
+        "src/Pages/Saturn2d.js",
+        33
       ]
     ]
   },
@@ -182,7 +201,7 @@
     "origin": [
       [
         "src/Pages/Components/DatePicker.js",
-        147
+        162
       ]
     ]
   },
@@ -192,7 +211,7 @@
     "origin": [
       [
         "src/Pages/Components/DatePicker.js",
-        131
+        146
       ]
     ]
   },
@@ -202,7 +221,7 @@
     "origin": [
       [
         "src/Pages/Components/DatePicker.js",
-        155
+        170
       ]
     ]
   },
@@ -212,7 +231,7 @@
     "origin": [
       [
         "src/Pages/Components/DatePicker.js",
-        139
+        154
       ]
     ]
   },
@@ -222,7 +241,7 @@
     "origin": [
       [
         "src/Pages/Components/DatePicker.js",
-        123
+        138
       ]
     ]
   }

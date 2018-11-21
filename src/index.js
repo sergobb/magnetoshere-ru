@@ -6,6 +6,7 @@ import "./index.css";
 import Earth2dPage from "./Pages/Earth2d";
 import Earth3dPage from "./Pages/Earth3d";
 import EarthDesc from "./Pages/EarthDesc";
+import Saturn2dPage from "./Pages/Saturn2d";
 import About from "./Pages/About";
 import * as serviceWorker from "./serviceWorker";
 import ghost from "./lib/ghost";
@@ -18,6 +19,7 @@ ghost.init().then(function() {
 				<Route exact path="/:lang/about" component={About} />
 				<Route exact path="/:lang/earthdesc" component={EarthDesc} />
 				<Route exact path="/:lang/earth2d" component={Earth2dPage} />
+				<Route exact path="/:lang/saturn2d" component={Saturn2dPage} />
 				<Route
 					exact
 					path="/:lang/earth2d/:uts/"

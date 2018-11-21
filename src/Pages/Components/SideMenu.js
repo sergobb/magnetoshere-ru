@@ -30,7 +30,7 @@ class SideMenu extends Component {
                     <Card body>
                         <CardHeader>
                             <CardTitle>
-                                <Trans id="Earth">Earth</Trans>
+                                {menu[0][this.props.context].item}
                             </CardTitle>
                         </CardHeader>
                         <CardBody>

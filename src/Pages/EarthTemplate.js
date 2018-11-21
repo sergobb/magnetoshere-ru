@@ -151,7 +151,7 @@ class App extends Component {
                         >
                             <SideMenu
                                 lang={this.state.lang}
-                                context="menuEarth"
+                                context={this.props.context}
                                 match={this.props.match}
                             />
                         </Col>
@@ -164,9 +164,7 @@ class App extends Component {
                         >
                             <div className="App">
                                 <h2>
-                                    <Trans id="earthModelDescTitle">
-                                        Earth's magnetosphere model
-                                    </Trans>
+                                    {this.props.title}
                                 </h2>
                                 <DatePicker
                                     datetime={this.state.datetime}
@@ -193,3 +191,4 @@ class App extends Component {
 }
 
 export default App;
+

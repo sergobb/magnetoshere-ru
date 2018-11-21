@@ -46,22 +46,26 @@ class ParamodData {
                             '3d': {
                                 index: 0,
                                 data: []
+                            },
+                            'saturn2d': {
+                                index: 0,
+                                data: []
                             }
                         };
                     }
 
-                    if (cache[dd].data.length < 10) {
+                    if (cache[dd].data.length < 4) {
                         cache[dd].data.push({
                             dt: moment(response.data.dt).format('x'),
                             response: response
                         });
-                        cache[dd].index = (cache[dd].index + 1) % 10;
+                        cache[dd].index = (cache[dd].index + 1) % 4;
                     } else {
                         cache[dd].data[cache[dd].index] = {
                             dt: moment(response.data.dt).format('x'),
                             response: response
                         }
-                        cache[dd].index = (cache[dd].index + 1) % 10;
+                        cache[dd].index = (cache[dd].index + 1) % 4;
                     }
                     localStorage.setItem("www.magnetospehe.ru/ParamodData", JSON.stringify(cache));
                     resolve(response);

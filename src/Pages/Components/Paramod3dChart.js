@@ -2,10 +2,10 @@
 import React, { Component } from "react";
 import ReactHighcharts from "react-highcharts";
 import Highcharts3d from "highcharts/highcharts-3d";
-import HighchartsBoost from "highcharts/modules/boost";
+// import HighchartsBoost from "highcharts/modules/boost";
 import "./css/ParamodCharts.css";
 Highcharts3d(ReactHighcharts.Highcharts);
-HighchartsBoost(ReactHighcharts.Highcharts);
+// HighchartsBoost(ReactHighcharts.Highcharts);
 
 class App extends Component {
     constructor(props) {
@@ -93,7 +93,7 @@ class App extends Component {
                             }
                         });
                     return {
-                        lineWidth: 1,
+                        lineWidth: 2,
                         color: "darkblue",
                         data: d2.map(function(line, i) {
                             return {

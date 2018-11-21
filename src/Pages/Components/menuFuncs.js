@@ -143,7 +143,7 @@ function makeMenuBarList(menu, lang, context = "Menubar", activeItem) {
                     <UncontrolledDropdown
                         nav
                         inNavbar
-                        key={"UncontrolledDropdown" + context}
+                        key={"UncontrolledDropdown" + context + m}
                         className={active ? "active" : ""}
                     >
                         <DropdownToggle nav caret>
@@ -167,8 +167,8 @@ function makeMenuBarList(menu, lang, context = "Menubar", activeItem) {
 
 function makeMenuBar(menu, lang, place, activeItem) {
     return (
-        <Nav className={place} navbar key={"MenuBar" + place}>
-            {makeMenuBarList(menu, lang, "MenuBar", activeItem)}
+        <Nav className={place} navbar key={"MenuBar" + place + activeItem}>
+            {makeMenuBarList(menu, lang, "MenuBar" + place, activeItem)}
         </Nav>
     );
 }

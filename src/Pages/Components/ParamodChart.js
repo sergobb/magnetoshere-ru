@@ -39,8 +39,8 @@ class App extends Component {
                       series: [],
                       xAxis: {
                           reversed: true,
-                          max: 15,
-                          min: -35,
+                          // max: 15,
+                          // min: -35,
                           gridLineWidth: 2,
                           tickAmount: 11,
                           title: {
@@ -61,8 +61,8 @@ class App extends Component {
                           }
                       },
                       yAxis: {
-                          max: 30,
-                          min: -30,
+                          // max: 30,
+                          // min: -30,
                           gridLineWidth: 2,
                           title: {
                               text: "Z, R<sub>e</sub>",
@@ -91,7 +91,9 @@ class App extends Component {
                 .map(function(d) {
                     return {
                         lineWidth: 2,
-                        data: d,
+                        data: d.map(function(l) {
+                            return [l[0], l[1]];
+                        }),
                         name: "Magnetic field line",
                         marker: {
                             enabled: false,
