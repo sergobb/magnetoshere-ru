@@ -25,6 +25,12 @@ class ParamodData {
             dt = Math.floor(dt/3600/1000)*3600*1000;
             // console.log(request);
             if (cache !== null) {
+                if (cache[dd] === undefined) {
+                    cache[dd] = {
+                        index: 0,
+                        data: []
+                    };
+                }
                 cache[dd].data.forEach(function (d) {
                 	if (d.dt === dt.toString()) {
                         cached = true;

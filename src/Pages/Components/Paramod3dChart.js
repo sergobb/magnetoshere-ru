@@ -206,12 +206,13 @@ class App extends Component {
                           formatter: function() {
                               return 'Magnetic field value: ' + 
                                 this.point.options.value +
-                                '<br>x: ' +
+                                ' nT <br>x: ' +
                                 this.point.options.x +
-                                '<br>y: ' +
+                                ' Re<br>y: ' +
                                 this.point.options.y +
-                                '<br>z: ' +
-                                this.point.options.z;
+                                ' Re<br>z: ' +
+                                this.point.options.z +
+                                ' Re';
                           }
                       },
                       legend: {
