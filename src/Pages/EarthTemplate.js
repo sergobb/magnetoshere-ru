@@ -33,7 +33,7 @@ class App extends Component {
         this.state = {
             datetime: now,
             data: null,
-            view3d: props.view3d,
+            version: props.version,
             lang: props.match.params.lang === "ru" ? "ru" : "en"
         };
     }
@@ -60,7 +60,7 @@ class App extends Component {
     //         paramodData
     //             .get({
     //                 datetime: now,
-    //                 view3d: this.state.view3d
+    //                 version: this.state.version
     //             })
     //             .then(function(response) {
     //                 var udt = moment(response.data.dt).format("x");
@@ -91,7 +91,7 @@ class App extends Component {
             paramodData
                 .get({
                     datetime: now,
-                    view3d: this.state.view3d
+                    version: this.state.version
                 })
                 .then(function(response) {
                     var udt = moment(response.data.dt).format("x"),
@@ -116,7 +116,7 @@ class App extends Component {
         paramodData
             .get({
                 datetime: picker.startDate,
-                view3d: this.state.view3d
+                version: this.state.version
             })
             .then(function(response) {
                 var udt = moment(response.data.dt).format("x"),

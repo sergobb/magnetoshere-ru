@@ -10,7 +10,7 @@ class App extends Earth {
         this.state = {
             datetime: this.state.datetime,
             data: null,
-            view3d: true,
+            version: '3d',
             lang: this.state.lang
         };
     }
@@ -24,7 +24,7 @@ class App extends Earth {
             <Earth
                 ParamodChart={ParamodChart}
                 match={this.props.match}
-                view3d={true}
+                version='3d'
                 history={this.props.history}
             />
         );

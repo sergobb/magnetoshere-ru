@@ -9,20 +9,21 @@ class ParamodData {
 
     get(config) {
         var request = {
-                dt: config.datetime.format('x')
+                dt: config.datetime.format('x'),
+                version: config.version
             },
-            program = (!config.view3d || config.view3d === undefined) ? 'paramod/' : 'paramod3d/',
+            program = 'paramod/',//(!config.version || config.version === undefined) ? 'paramod/' : 'paramod3d/',
             url = (process.env.REACT_APP_BACKEND_URL !== undefined) ?
             (process.env.REACT_APP_BACKEND_URL + program) : 'http://localhost:8888/api/v1/paramod/';
 
         return new Promise(function (resolve, reject) {
             var dt = config.datetime.format('x'),
-                dd = (config.view3d) ? '3d' : '2d',
+                dd = (config.version),// ? '3d' : '2d',
                 cache = JSON.parse(localStorage.getItem("www.magnetospehe.ru/ParamodData")),
                 cached = false;
 
             dt = Math.floor(dt/3600/1000)*3600*1000;
-            // console.log(dt);
+            // console.log(request);
             if (cache !== null) {
                 cache[dd].data.forEach(function (d) {
                 	if (d.dt === dt.toString()) {

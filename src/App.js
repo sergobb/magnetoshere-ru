@@ -16,7 +16,7 @@ function getParamodData(config) {
     var request = {
             dt: config.datetime.format('x')
         },
-        program = (!config.view3d || config.view3d === undefined) ? 'paramod/' : 'paramod3d/',
+        program = (!config.version || config.version === undefined) ? 'paramod/' : 'paramod3d/',
         url = (process.env.REACT_APP_BACKEND_URL !== undefined) ?
         (process.env.REACT_APP_BACKEND_URL + program) : 'http://localhost:8888/api/v1/paramod/';
 
@@ -36,7 +36,7 @@ class App extends Component {
         this.state = {
             datetime: now,
             data: null,
-            view3d: (values.chart === '3d')
+            version: (values.chart === '3d')
         };
 
     }
@@ -47,7 +47,7 @@ class App extends Component {
         if (this.state.data === null) {
             getParamodData({
                 datetime: now,
-                view3d: this.state.view3d
+                version: this.state.version
             }).then(function (response) {
                 var udt = moment(response.data.dt).format('x');
                 self.setState({
@@ -63,7 +63,7 @@ class App extends Component {
 
         getParamodData({
             datetime: picker.startDate,
-            view3d: this.state.view3d
+            version: this.state.version
         }).then(function (response) {
             var udt = moment(response.data.dt).format('x');
             self.setState({
@@ -77,7 +77,7 @@ class App extends Component {
         var values = queryString.parse(this.props.location.search),
             title = (values.view !== 'date' && values.view !== 'full') ? moment.unix(this.state.datetime / 1000).format("YYYY-MM-DD HH:00") : '',
             lang = (values.lang !== undefined) ? values.lang : 'ru',
-            view3d = (values.chart === '3d');
+            version = (values.chart === '3d');
 
 
         return (
@@ -88,7 +88,7 @@ class App extends Component {
                         onDateChange = {this.onDateChange.bind(this)}
                     />
                     {
-                        (view3d) ? 
+                        (version) ? 
                         (
                             <Paramod3dChart
                             title = {title}
