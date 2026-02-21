@@ -1,0 +1,177 @@
+diff --git a/node_modules/reactstrap/dist/reactstrap.es.js b/node_modules/reactstrap/dist/reactstrap.es.js
+index 101b562..b6f44e2 100644
+--- a/node_modules/reactstrap/dist/reactstrap.es.js
++++ b/node_modules/reactstrap/dist/reactstrap.es.js
+@@ -394,15 +394,11 @@ var propTypes = {
+   cssModule: PropTypes.object
+ };
+ 
+-var defaultProps = {
+-  tag: 'div'
+-};
+-
+ var Container = function Container(props) {
+   var className = props.className,
+       cssModule = props.cssModule,
+       fluid = props.fluid,
+-      Tag = props.tag,
++      Tag = props.tag !== undefined ? props.tag : 'div',
+       attributes = objectWithoutProperties(props, ['className', 'cssModule', 'fluid', 'tag']);
+ 
+ 
+@@ -412,7 +408,6 @@ var Container = function Container(props) {
+ };
+ 
+ Container.propTypes = propTypes;
+-Container.defaultProps = defaultProps;
+ 
+ var propTypes$1 = {
+   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+@@ -422,15 +417,11 @@ var propTypes$1 = {
+   form: PropTypes.bool
+ };
+ 
+-var defaultProps$1 = {
+-  tag: 'div'
+-};
+-
+ var Row = function Row(props) {
+   var className = props.className,
+       cssModule = props.cssModule,
+       noGutters = props.noGutters,
+-      Tag = props.tag,
++      Tag = props.tag !== undefined ? props.tag : 'div',
+       form = props.form,
+       attributes = objectWithoutProperties(props, ['className', 'cssModule', 'noGutters', 'tag', 'form']);
+ 
+@@ -441,7 +432,6 @@ var Row = function Row(props) {
+ };
+ 
+ Row.propTypes = propTypes$1;
+-Row.defaultProps = defaultProps$1;
+ 
+ var colWidths = ['xs', 'sm', 'md', 'lg', 'xl'];
+ var stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+@@ -466,11 +456,6 @@ var propTypes$2 = {
+   widths: PropTypes.array
+ };
+ 
+-var defaultProps$2 = {
+-  tag: 'div',
+-  widths: colWidths
+-};
+-
+ var getColumnSizeClass = function getColumnSizeClass(isXs, colWidth, colSize) {
+   if (colSize === true || colSize === '') {
+     return isXs ? 'col' : 'col-' + colWidth;
+@@ -484,8 +469,8 @@ var getColumnSizeClass = function getColumnSizeClass(isXs, colWidth, colSize) {
+ var Col = function Col(props) {
+   var className = props.className,
+       cssModule = props.cssModule,
+-      widths = props.widths,
+-      Tag = props.tag,
++      widths = props.widths !== undefined ? props.widths : colWidths,
++      Tag = props.tag !== undefined ? props.tag : 'div',
+       attributes = objectWithoutProperties(props, ['className', 'cssModule', 'widths', 'tag']);
+ 
+   var colClasses = [];
+@@ -524,7 +509,6 @@ var Col = function Col(props) {
+ };
+ 
+ Col.propTypes = propTypes$2;
+-Col.defaultProps = defaultProps$2;
+ 
+ var propTypes$3 = {
+   light: PropTypes.bool,
+diff --git a/node_modules/reactstrap/src/Col.js b/node_modules/reactstrap/src/Col.js
+index 6f62f4a..7449745 100644
+--- a/node_modules/reactstrap/src/Col.js
++++ b/node_modules/reactstrap/src/Col.js
+@@ -32,11 +32,6 @@ const propTypes = {
+   widths: PropTypes.array,
+ };
+ 
+-const defaultProps = {
+-  tag: 'div',
+-  widths: colWidths,
+-};
+-
+ const getColumnSizeClass = (isXs, colWidth, colSize) => {
+   if (colSize === true || colSize === '') {
+     return isXs ? 'col' : `col-${colWidth}`;
+@@ -51,8 +46,8 @@ const Col = (props) => {
+   const {
+     className,
+     cssModule,
+-    widths,
+-    tag: Tag,
++    widths = colWidths,
++    tag: Tag = 'div',
+     ...attributes
+   } = props;
+   const colClasses = [];
+@@ -98,6 +93,5 @@ const Col = (props) => {
+ };
+ 
+ Col.propTypes = propTypes;
+-Col.defaultProps = defaultProps;
+ 
+ export default Col;
+diff --git a/node_modules/reactstrap/src/Container.js b/node_modules/reactstrap/src/Container.js
+index a9ea18c..6dd32a4 100644
+--- a/node_modules/reactstrap/src/Container.js
++++ b/node_modules/reactstrap/src/Container.js
+@@ -10,16 +10,12 @@ const propTypes = {
+   cssModule: PropTypes.object,
+ };
+ 
+-const defaultProps = {
+-  tag: 'div',
+-};
+-
+ const Container = (props) => {
+   const {
+     className,
+     cssModule,
+     fluid,
+-    tag: Tag,
++    tag: Tag = 'div',
+     ...attributes
+   } = props;
+ 
+@@ -34,6 +30,5 @@ const Container = (props) => {
+ };
+ 
+ Container.propTypes = propTypes;
+-Container.defaultProps = defaultProps;
+ 
+ export default Container;
+diff --git a/node_modules/reactstrap/src/Row.js b/node_modules/reactstrap/src/Row.js
+index 670c8c4..c9dee2c 100644
+--- a/node_modules/reactstrap/src/Row.js
++++ b/node_modules/reactstrap/src/Row.js
+@@ -11,16 +11,12 @@ const propTypes = {
+   form: PropTypes.bool
+ };
+ 
+-const defaultProps = {
+-  tag: 'div'
+-};
+-
+ const Row = (props) => {
+   const {
+     className,
+     cssModule,
+     noGutters,
+-    tag: Tag,
++    tag: Tag = 'div',
+     form,
+     ...attributes
+   } = props;
+@@ -37,6 +33,5 @@ const Row = (props) => {
+ };
+ 
+ Row.propTypes = propTypes;
+-Row.defaultProps = defaultProps;
+ 
+ export default Row;

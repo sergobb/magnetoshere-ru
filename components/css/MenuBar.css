@@ -1,0 +1,26 @@
+.MenuBar {
+  background-color: #f3f3f3;
+  padding: 5px;
+}
+
+/* Одинаковая высота строки для всех пунктов (иконки 36px + отступы) */
+.MenuBar .navbar-nav .nav-item {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.MenuBar .navbar-nav .nav-item .nav-link,
+.MenuBar .navbar-nav .dropdown .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.MenuBar .navbar-nav img {
+  max-height: 36px;
+  width: auto;
+  object-fit: contain;
+}

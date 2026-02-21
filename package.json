@@ -1,62 +1,44 @@
 {
-    "name": "magnetosphere.ru",
-    "version": "0.2.0",
-    "private": true,
-    "homepage": "/",
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.6",
-        "@fortawesome/free-brands-svg-icons": "^5.4.1",
-        "@fortawesome/free-regular-svg-icons": "^5.4.1",
-        "@fortawesome/free-solid-svg-icons": "^5.4.1",
-        "@fortawesome/react-fontawesome": "^0.1.3",
-        "@lingui/react": "^2.7.0",
-        "ajv": "^6.5.4",
-        "ajv-errors": "^1.0.0",
-        "ajv-keywords": "^3.2.0",
-        "axios": "^0.18.0",
-        "bootstrap": "^4.1.3",
-        "bootstrap-daterangepicker": "^3.0.3",
-        "highcharts": "^6.1.4",
-        "i": "^0.3.6",
-        "jquery": "^3.3.1",
-        "moment": "^2.22.2",
-        "npm": "^6.4.1",
-        "popper": "^1.0.1",
-        "query-string": "^6.2.0",
-        "react": "^16.5.2",
-        "react-bootstrap-daterangepicker": "^4.1.0",
-        "react-dom": "^16.5.2",
-        "react-highcharts": "^16.0.2",
-        "react-html-parser": "^2.0.2",
-        "react-mathjax2": "0.0.2",
-        "react-router-dom": "^4.3.1",
-        "react-scripts": "2.0.4",
-        "react-stickynode": "^2.1.0",
-        "reactstrap": "^6.5.0"
-    },
-    "scripts": {
-        "add-locale": "lingui add-locale",
-        "extract": "lingui extract",
-        "compile": "lingui compile",
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "tar": "tar -czvf build.tar.gz ./build"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ],
-    "devDependencies": {
-        "@babel/core": "^7.1.2",
-        "@lingui/cli": "^2.7.0",
-        "@lingui/macro": "^2.7.0",
-        "babel-core": "^7.0.0-bridge.0"
-    }
+  "name": "magnetosphere.ru",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "patch-package",
+    "add-locale": "lingui add-locale",
+    "extract": "lingui extract",
+    "compile": "lingui compile"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.6",
+    "@fortawesome/free-brands-svg-icons": "^5.4.1",
+    "@fortawesome/free-regular-svg-icons": "^5.4.1",
+    "@fortawesome/free-solid-svg-icons": "^5.4.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "@lingui/react": "^2.7.0",
+    "bootstrap": "^4.1.3",
+    "bootstrap-daterangepicker": "^3.0.3",
+    "highcharts": "^6.1.4",
+    "moment": "^2.22.2",
+    "next": "^14.2.0",
+    "popper": "^1.0.1",
+    "react": "^18.2.0",
+    "react-bootstrap-daterangepicker": "^4.1.0",
+    "react-dom": "^18.2.0",
+    "react-highcharts": "^16.0.2",
+    "react-html-parser": "^2.0.2",
+    "react-mathjax2": "0.0.2",
+    "react-stickynode": "^2.1.0",
+    "reactstrap": "^6.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@lingui/cli": "^2.7.0",
+    "@lingui/macro": "^2.7.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.2.0"
+  }
 }
