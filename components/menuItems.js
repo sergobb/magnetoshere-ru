@@ -98,7 +98,7 @@ const menu = [
       lang: "en",
     },
     menuOldSite: {
-      external: "http://www.magnetosphere.ru/old/",
+      external: "/old/",
       item: <Trans id="menuOldSite">Old Site</Trans>,
     },
   },
