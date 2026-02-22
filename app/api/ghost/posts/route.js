@@ -7,10 +7,10 @@ const emptyGhostResponse = { posts: [], meta: {} };
 
 function buildGhostUrl() {
   if (GHOST_CLIENT_SECRET) {
-    return `${GHOST_URL}/ghost/api/v0.1/posts/?client_id=${encodeURIComponent(GHOST_CLIENT_ID)}&client_secret=${encodeURIComponent(GHOST_CLIENT_SECRET)}&include=tags&filter=tag:magnetosphere-ru`;
+    return `${GHOST_URL}/articles/ghost/api/v0.1/posts/?client_id=${encodeURIComponent(GHOST_CLIENT_ID)}&client_secret=${encodeURIComponent(GHOST_CLIENT_SECRET)}&include=tags&filter=tag:magnetosphere-ru`;
   }
   if (GHOST_KEY) {
-    return `${GHOST_URL}/ghost/api/v3/content/posts/?key=${encodeURIComponent(GHOST_KEY)}&include=tags&filter=tag:magnetosphere-ru`;
+    return `${GHOST_URL}/articles/ghost/api/v3/content/posts/?key=${encodeURIComponent(GHOST_KEY)}&include=tags&filter=tag:magnetosphere-ru`;
   }
   return null;
 }
