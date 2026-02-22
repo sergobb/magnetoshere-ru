@@ -17,13 +17,13 @@ function buildGhostUrl() {
 
 export async function GET() {
   const url = buildGhostUrl();
-  // console.log(url)
+  console.log(url);
   if (!url) {
     return Response.json(emptyGhostResponse);
   }
   try {
     const res = await fetch(url, { next: { revalidate: 60 } });
-    // console.log(res)
+    console.log(res)
     const text = await res.text();
     let data;
     try {
