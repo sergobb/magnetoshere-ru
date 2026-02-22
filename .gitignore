@@ -38,3 +38,7 @@ pnpm-debug.log*
 
 # Lingui
 .lingui
+
+# SSL (самоподписанные сертификаты)
+certs/
+old/
